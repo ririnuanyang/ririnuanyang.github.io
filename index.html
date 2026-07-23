@@ -12,7 +12,7 @@
 <meta property="og:url" content="https://ririnuanyang.github.io/">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%8C%A4%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/png" href="sun.png">
 <style>:root{color-scheme:light}body{margin:0;padding:0}img{max-width:100%}</style>
 </head>
 <body>
@@ -134,10 +134,10 @@
   }
   .about .who{display:flex; align-items:center; gap:16px}
   .avatar{
-    width:72px; height:72px; border-radius:50%; flex:0 0 auto;
-    background:radial-gradient(circle at 50% 38%, var(--sun) 0 46%, var(--orange) 47% 100%);
-    display:grid; place-items:center; font-size:2rem; box-shadow:inset 0 -6px 12px rgba(0,0,0,.08);
+    width:104px; height:104px; flex:0 0 auto;
+    display:grid; place-items:center; margin:-8px 0;
   }
+  .avatar img{width:100%; height:100%; object-fit:contain; display:block}
   .about .who h3{font-size:1.22rem}
   .about .who span{color:var(--ink-soft); font-size:.9rem; font-weight:600}
   .about p{color:var(--ink); font-size:1rem}
@@ -148,6 +148,30 @@
     padding:30px 24px; text-align:center; color:var(--ink-soft); background:transparent;
   }
   .placeholder .ico{font-size:1.6rem}
+
+  /* ---------- testimonials ---------- */
+  .scene-photo{
+    width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center 35%; display:block;
+    border-radius:var(--radius); border:4px solid var(--card);
+    box-shadow:var(--shadow); margin-bottom:22px;
+  }
+  .quotes{display:grid; gap:14px}
+  .quote{
+    position:relative; background:var(--card); border:1px solid var(--line-hair);
+    border-radius:var(--radius); padding:20px 24px 22px; box-shadow:var(--shadow); margin:0;
+  }
+  .q-tag{
+    display:inline-flex; align-items:center; gap:8px; font-size:1rem; font-weight:700;
+    letter-spacing:.08em; color:var(--orange-deep); background:var(--sun-soft);
+    padding:7px 17px; border-radius:999px; margin-bottom:14px;
+  }
+  .q-tag::before{content:""; width:9px; height:9px; border-radius:50%; background:var(--orange); flex:0 0 auto}
+  .quote p{color:var(--ink); font-size:1.04rem; line-height:1.75; margin:0 0 12px}
+  .quote .who{color:var(--orange-deep); font-size:.9rem; font-weight:700}
+  .quote .who::before{content:"— "}
+  .quotes-note{
+    text-align:center; margin-top:18px; font-size:.8rem; color:var(--ink-soft);
+  }
 
   /* ---------- faq ---------- */
   .faq{display:grid; gap:12px}
@@ -250,7 +274,7 @@
     <div class="card">
       <div class="ico">☁️</div>
       <h3>肩頸舒緩體驗</h3>
-      <p>陪你把緊繃了一整天的肩頸，慢慢放鬆下來。</p>
+      <p>陪你把緊繃了一整天的肩頸，慢慢放鬆下來。體驗中會用一台大家暱稱「雲朵機」的儀器，幫你放鬆肩頸。</p>
       <span class="disc">＊為放鬆與健康促進體驗，感受因人而異、非醫療行為。</span>
     </div>
     <div class="card">
@@ -272,7 +296,7 @@
   <span class="eyebrow">關於湯湯</span>
   <div class="about">
     <div class="who">
-      <div class="avatar">☀️</div>
+      <div class="avatar"><img src="sun.png" alt="日日暖陽微笑太陽"></div>
       <div>
         <h3>我是湯湯</h3>
         <span>日日暖陽・健康管理 × 體重管理師</span>
@@ -283,17 +307,30 @@
   </div>
 </section>
 
-<!-- 顧客回饋區：暫時隱藏，待收集到真實回饋後（文字+情境照版型）再打開
 <section class="wrap reveal">
   <span class="eyebrow">顧客的話</span>
-  <h2 class="title">真實的回饋，慢慢累積中</h2>
+  <h2 class="title">他們體驗後，這麼說</h2>
   <p class="section-sub">每一次陪伴，都想被好好記得。</p>
-  <div class="placeholder">
-    <div class="ico">🌱</div>
-    <p>（這裡之後放上真實顧客的體驗回饋——<br>等你收集到了，我幫你放上來。）</p>
+  <img class="scene-photo" src="experience2.jpg" alt="日日暖陽肩頸舒緩體驗情境" loading="lazy">
+  <div class="quotes">
+    <blockquote class="quote">
+      <span class="q-tag">肩頸放鬆有感</span>
+      <p>以前沒有體驗過這種保養方式，原本只是抱著試試看的心情。做完右半邊後，真的覺得肩頸輕鬆很多，左右差異很有感。</p>
+      <div class="who">趙小姐</div>
+    </blockquote>
+    <blockquote class="quote">
+      <span class="q-tag">忙碌上班族推薦</span>
+      <p>工作忙，平常很少有時間去按摩。這樣的保養方式很方便，體驗後整個肩頸放鬆不少，也更適合像我這種平常沒什麼時間的人。</p>
+      <div class="who">T先生</div>
+    </blockquote>
+    <blockquote class="quote">
+      <span class="q-tag">全家都能使用</span>
+      <p>體驗完之後，我就跟湯湯說，我想帶回家。除了自己使用，也可以幫媽媽和弟弟放鬆肩頸，一台全家都能一起使用，真的很方便。</p>
+      <div class="who">C小姐</div>
+    </blockquote>
   </div>
+  <p class="quotes-note">以上為顧客個人真實體驗的感受分享，非療效保證，實際感受因人而異。</p>
 </section>
--->
 
 <section class="wrap reveal">
   <span class="eyebrow">常見問題</span>
