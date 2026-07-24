@@ -109,6 +109,26 @@
   .cta .ic{width:22px;height:22px;display:grid;place-items:center;background:rgba(255,255,255,.24);border-radius:50%;font-size:.9rem}
   .cta-note{display:block; font-size:.82rem; color:var(--ink-soft); margin-top:12px}
 
+  /* ---------- pick (免費二選一入口) ---------- */
+  .pick{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  @media (max-width:560px){ .pick{grid-template-columns:1fr} }
+  .pick-card{
+    background:var(--card); border:1px solid var(--line-hair); border-radius:var(--radius);
+    padding:24px 22px; box-shadow:var(--shadow); display:flex; flex-direction:column;
+  }
+  .pick-card .ico{font-size:1.9rem; line-height:1}
+  .pick-tag{
+    align-self:flex-start; display:inline-flex; align-items:center; gap:8px;
+    font-size:.88rem; font-weight:700; letter-spacing:.04em; color:var(--orange-deep);
+    background:var(--sun-soft); padding:6px 15px; border-radius:999px; margin:14px 0 10px;
+  }
+  .pick-tag::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--orange); flex:0 0 auto}
+  .pick-card h3{font-size:1.16rem; margin:0 0 8px}
+  .pick-card p{color:var(--ink-soft); font-size:.96rem; flex:1 1 auto}
+  .pick-note{text-align:center; color:var(--ink-soft); font-size:.86rem; margin:18px 0 0}
+  .pick-cta{text-align:center; margin-top:20px}
+  .pick-photo{width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center; border-radius:14px; border:1px solid var(--line-hair); box-shadow:var(--shadow); margin:2px 0 14px; display:block}
+
   /* ---------- cards ---------- */
   .cards{display:grid; gap:16px}
   .card{
@@ -132,13 +152,13 @@
     border-radius:var(--radius); padding:30px 26px; box-shadow:var(--shadow);
     display:grid; gap:18px;
   }
-  .about .who{display:flex; align-items:center; gap:16px}
+  .about .who{display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center; margin-bottom:4px}
   .avatar{
-    width:104px; height:104px; flex:0 0 auto;
-    display:grid; place-items:center; margin:-8px 0;
+    width:136px; height:136px; flex:0 0 auto;
+    display:grid; place-items:center; margin:-8px 0 -42px;
   }
   .avatar img{width:100%; height:100%; object-fit:contain; display:block}
-  .about .who h3{font-size:1.22rem}
+  .about .who h3{font-size:1.78rem}
   .about .who span{color:var(--ink-soft); font-size:.9rem; font-weight:600}
   .about p{color:var(--ink); font-size:1rem}
 
@@ -232,10 +252,36 @@
     <span class="pill">🤝 陪伴式追蹤</span>
   </div>
   <a class="cta" href="https://lin.ee/rbXTms6">
-    <span class="ic">＋</span> 加 LINE，預約肩頸舒緩體驗
+    <span class="ic">＋</span> 加 LINE，開始你的免費體驗
   </a>
   <span class="cta-note">高雄・免費體驗　·　不推銷、不用有壓力</span>
 </header>
+
+<section class="wrap reveal">
+  <span class="eyebrow">免費第一次體驗</span>
+  <h2 class="title">想從哪裡開始，你來選</h2>
+  <p class="section-sub">第一次來，免費體驗一種　·　高雄　·　不推銷、不用有壓力</p>
+  <div class="pick">
+    <div class="pick-card">
+      <img class="pick-photo" src="mead.jpg" alt="MEAD 健康需求評估——經絡量測過程" loading="lazy" style="object-position:center 42%">
+      <span class="pick-tag">想先了解自己</span>
+      <h3>🩵 MEAD 健康需求評估</h3>
+      <p>一起看你的作息、睡眠、壓力和身體狀況，找到適合你的方向——先搞懂你需要什麼，再談其他。</p>
+      <span class="disc">＊MEAD 為健康管理輔助工具，非醫療診斷或治療。</span>
+    </div>
+    <div class="pick-card">
+      <img class="pick-photo" src="experience2.jpg" alt="肩頸放鬆體驗——雲朵機儀器" loading="lazy" style="object-position:center 32%">
+      <span class="pick-tag">想先放鬆有感</span>
+      <h3>☁️ 肩頸放鬆體驗</h3>
+      <p>用大家暱稱「雲朵機」的儀器，陪你把緊繃了一整天的肩頸慢慢鬆下來，當場就有感覺。</p>
+      <span class="disc">＊為放鬆與健康促進體驗，感受因人而異、非醫療行為。</span>
+    </div>
+  </div>
+  <p class="pick-note">＊一次體驗一種，加 LINE 跟湯湯說你想先試哪個就好 🌤</p>
+  <div class="pick-cta">
+    <a class="cta" href="https://lin.ee/rbXTms6"><span class="ic">＋</span> 加 LINE，預約免費體驗</a>
+  </div>
+</section>
 
 <section class="wrap reveal">
   <span class="eyebrow">為什麼選日日暖陽</span>
@@ -293,17 +339,19 @@
 </section>
 
 <section class="wrap reveal">
-  <span class="eyebrow">關於湯湯</span>
+  <span class="eyebrow">關於日日暖陽</span>
   <div class="about">
     <div class="who">
       <div class="avatar"><img src="sun.png" alt="日日暖陽微笑太陽"></div>
       <div>
-        <h3>我是湯湯</h3>
+        <h3>嗨，我是湯湯</h3>
         <span>日日暖陽・健康管理 × 體重管理師</span>
       </div>
     </div>
     <p>老實說，我自己以前也很怕被推銷。那種還沒了解你的狀況，就一直推薦產品、一直叫你買的感覺，真的會讓人很有壓力。</p>
     <p>所以現在換我做健康管理，我想做的是完全相反的事——<strong>先了解你，再談你需要什麼。</strong>在高雄，陪你好好認識自己的身體。</p>
+    <p>🌿 我平常也有使用並分享 Nu Skin 的健康管理產品。日日暖陽也會依照每個人的需求，提供適合的健康管理方向；如果有適合搭配的產品，我也很樂意分享。如果沒有興趣，也完全沒關係，不會強迫推銷。</p>
+    <p>我一直相信：<strong>先體驗、有感受，再決定適不適合自己。</strong></p>
   </div>
 </section>
 
@@ -311,8 +359,17 @@
   <span class="eyebrow">顧客的話</span>
   <h2 class="title">他們體驗後，這麼說</h2>
   <p class="section-sub">每一次陪伴，都想被好好記得。</p>
-  <img class="scene-photo" src="experience2.jpg" alt="日日暖陽肩頸舒緩體驗情境" loading="lazy">
   <div class="quotes">
+    <blockquote class="quote">
+      <span class="q-tag">更了解自己的身體</span>
+      <p>本來半信半疑來體驗，結果檢測分享的內容跟我的生活狀況蠻吻合，讓我對自己的身體多了不少了解。湯湯會依我的需求給健康管理方向，也會分享適合的產品建議，但全程沒有推銷壓力，聊得很愉快。</p>
+      <div class="who">程小姐</div>
+    </blockquote>
+    <blockquote class="quote">
+      <span class="q-tag">重視品質也安心</span>
+      <p>一開始對湯湯分享的產品還有點存疑，後來了解到產品有通過 6S 品質措施，讓我比較放心。我本身在製造業工作，對品質管理特別重視，所以就抱著試試看的心情來體驗。</p>
+      <div class="who">李先生</div>
+    </blockquote>
     <blockquote class="quote">
       <span class="q-tag">肩頸放鬆有感</span>
       <p>以前沒有體驗過這種保養方式，原本只是抱著試試看的心情。做完右半邊後，真的覺得肩頸輕鬆很多，左右差異很有感。</p>
@@ -338,7 +395,7 @@
   <div class="faq">
     <details>
       <summary>第一次體驗要準備什麼？</summary>
-      <p>什麼都不用準備，穿舒適的衣服來就好。我會先陪你聊聊、了解你的狀況，再一起做肩頸舒緩體驗，整個過程輕鬆、不用有壓力。</p>
+      <p>什麼都不用準備，穿舒適的衣服來就好。我會先陪你聊聊、了解你的狀況，再一起進行你選的免費體驗——MEAD 健康需求評估或肩頸放鬆，整個過程輕鬆、不用有壓力。</p>
     </details>
     <details>
       <summary>會不會一直被推銷產品？</summary>
@@ -346,7 +403,7 @@
     </details>
     <details>
       <summary>在高雄哪裡？怎麼預約？</summary>
-      <p>服務地點在高雄。最方便的方式是加入日日暖陽的 LINE，跟我約時間，我幫你安排一次肩頸舒緩體驗。</p>
+      <p>服務地點在高雄。最方便的方式是加入日日暖陽的 LINE，跟我約時間，告訴我你想先試哪一種免費體驗（MEAD 檢測或肩頸放鬆），我幫你安排。</p>
     </details>
   </div>
 </section>
@@ -372,7 +429,7 @@
 </footer>
 
 <div class="sticky">
-  <a class="cta" href="https://lin.ee/rbXTms6"><span class="ic">＋</span> 加 LINE，預約肩頸舒緩體驗</a>
+  <a class="cta" href="https://lin.ee/rbXTms6"><span class="ic">＋</span> 加 LINE，開始你的免費體驗</a>
 </div>
 
 <script>
