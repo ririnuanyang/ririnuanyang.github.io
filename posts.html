@@ -91,10 +91,14 @@
   .art-card{
     display:block; text-decoration:none; color:inherit;
     background:var(--card); border:1px solid var(--line-hair); border-radius:var(--radius);
-    padding:26px 26px; box-shadow:var(--shadow);
+    overflow:hidden; box-shadow:var(--shadow);
     transition:transform .18s ease;
   }
   .art-card:hover{transform:translateY(-3px)}
+  .art-card .thumb{
+    width:100%; aspect-ratio:16/9; object-fit:cover; object-position:center 42%; display:block;
+  }
+  .art-card .card-body{padding:22px 26px 26px}
   .art-card .tag{
     display:inline-block; font-size:.78rem; font-weight:700; color:var(--orange-deep);
     background:var(--cream-2); padding:4px 12px; border-radius:999px; margin-bottom:12px;
@@ -125,10 +129,12 @@
 <div class="wrap list">
 
   <a class="art-card" href="article-mead.html">
-    <span class="tag">健康知識</span>
-    <h2>MEAD經絡檢測是什麼？為什麼健檢正常還是覺得累</h2>
-    <p>健檢正常不代表不需要照顧身體，了解MEAD經絡檢測如何評估身體能量狀態，找到自我照顧的方向。</p>
-    <span class="read-more">閱讀全文 →</span>
+    <div class="card-body">
+      <span class="tag">健康知識</span>
+      <h2>明明健檢正常，為什麼還是覺得疲累？認識 MEAD 經絡檢測</h2>
+      <p>健檢正常不代表不需要照顧身體，了解MEAD經絡檢測如何評估身體能量狀態，找到自我照顧的方向。</p>
+      <span class="read-more">閱讀全文 →</span>
+    </div>
   </a>
 
 </div>
