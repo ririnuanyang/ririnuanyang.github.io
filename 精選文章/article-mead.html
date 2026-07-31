@@ -58,6 +58,7 @@
   }
 
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{
     margin:0; color:var(--ink); background:var(--cream);
     font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
@@ -89,7 +90,7 @@
 
   .art-body{padding-top:20px; padding-bottom:10px}
   .art-body p{margin-bottom:16px; font-size:1rem}
-  .art-body h2{font-size:1.28rem; color:var(--orange-deep); margin:34px 0 14px}
+  .art-body h2{font-size:1.28rem; color:var(--orange-deep); margin:34px 0 14px; scroll-margin-top:20px}
   @media (max-width:420px){ .art-body h2{font-size:1.14rem} }
   .art-body ul{margin:0 0 16px; padding-left:22px}
   .art-body li{margin-bottom:8px}
@@ -98,9 +99,16 @@
   .inline-link a{color:var(--orange-deep); font-weight:700; text-decoration:none}
   .inline-link a:hover{text-decoration:underline}
 
+  .toc{background:var(--card); border:1px solid var(--line-hair); border-radius:var(--radius); padding:20px 22px; margin:22px 0 8px; box-shadow:var(--shadow)}
+  .toc-title{font-weight:800; color:var(--orange-deep); font-size:.94rem; margin:0 0 10px}
+  .toc ol{margin:0; padding-left:20px}
+  .toc li{margin-bottom:7px; font-size:.96rem}
+  .toc a{color:var(--ink); text-decoration:none}
+  .toc a:hover{color:var(--orange-deep); text-decoration:underline}
+
   .faq{
     background:var(--card); border:1px solid var(--line-hair); border-radius:var(--radius);
-    padding:26px 24px; margin:30px 0; box-shadow:var(--shadow);
+    padding:26px 24px; margin:30px 0; box-shadow:var(--shadow); scroll-margin-top:20px;
   }
   .faq h2{font-size:1.28rem; color:var(--orange-deep); margin-bottom:16px}
   .qa{margin-bottom:18px}
@@ -156,23 +164,35 @@
   <p>其實，很多人的身體不是生病，而是長期生活習慣累積造成的失衡，只是還沒有反映在一般健檢數據上。</p>
   <p>這篇文章會帶你了解，為什麼健檢正常還是會覺得累，以及 MEAD 經絡檢測如何作為健康管理與生活習慣調整的參考。</p>
 
-  <h2>健檢正常還是很累，為什麼會這樣？</h2>
+  <div class="toc">
+    <p class="toc-title">📖 本文目錄</p>
+    <ol>
+      <li><a href="#why-tired">健檢正常還是很累，為什麼會這樣？</a></li>
+      <li><a href="#why-know">為什麼了解身體能量狀態很重要？</a></li>
+      <li><a href="#what-is">MEAD經絡檢測是什麼？</a></li>
+      <li><a href="#hurt">MEAD檢測會痛嗎？流程大概多久？</a></li>
+      <li><a href="#who">哪些人適合做健康需求評估？</a></li>
+      <li><a href="#faq">常見問題 FAQ</a></li>
+    </ol>
+  </div>
+
+  <h2 id="why-tired">健檢正常還是很累，為什麼會這樣？</h2>
   <p>「健檢正常還是很累」「睡很久還是很累」，是我最常聽到的問題。健檢主要偵測的是「明顯異常」的數值，例如血糖、血脂、肝腎功能是否超出標準範圍。但疲勞、緊繃、睡不飽這類感受，往往是長期生活習慣累積出來的狀態，不一定會反映在抽血報告上。</p>
   <p>長期久坐、作息不規律、壓力累積，這些因素會讓身體處於「亞健康」狀態——不是生病，但也不是真正的健康。這也是為什麼很多上班族、久坐族明明檢查一切正常，卻還是覺得體力透支、慢性疲勞，常常很累怎麼辦都找不到原因。</p>
 
-  <h2>為什麼了解身體能量狀態很重要？</h2>
+  <h2 id="why-know">為什麼了解身體能量狀態很重要？</h2>
   <p>很多人在真正出現疾病之前，其實身體早就開始出現一些訊號，例如常常疲勞、睡不好、肩頸緊繃、精神不好、容易沒力。這些感受不一定會出現在健檢報告上，但卻可能影響每天的生活品質。</p>
   <p>因此，有些人會透過 MEAD 經絡能量檢測，作為了解目前身體狀態與健康管理方向的參考。</p>
 
-  <h2>MEAD經絡檢測是什麼？</h2>
+  <h2 id="what-is">MEAD經絡檢測是什麼？</h2>
   <p>MEAD經絡檢測是一種健康管理輔助工具，透過檢測身體十二經絡的能量平衡狀況，協助了解目前的身體能量狀態，作為日常保養與生活習慣調整方向的參考。</p>
   <p>MEAD不是醫療診斷工具，也不能取代醫師的專業判斷。它的角色比較像是「健康需求評估」——幫助你在還沒有明顯病兆之前，先看見身體可能需要留意的地方，進一步調整生活習慣或作息安排。</p>
 
-  <h2>MEAD檢測會痛嗎？流程大概多久？</h2>
+  <h2 id="hurt">MEAD檢測會痛嗎？流程大概多久？</h2>
   <p>MEAD經絡檢測不會疼痛，也不具侵入性，整個檢測過程大約 3 分鐘就能完成。檢測時只需要手腕接觸儀器，不需要抽血、不需要禁食。</p>
   <p>檢測完成後，我會陪你一起看報告結果，說明目前呈現的能量狀態，並依照你的生活型態，聊聊有哪些日常習慣可以慢慢調整。這個過程不是一次性的檢測就結束，而是作為你了解自己身體的一個起點。</p>
 
-  <h2>哪些人適合做健康需求評估？</h2>
+  <h2 id="who">哪些人適合做健康需求評估？</h2>
   <p>以下這幾種情況，通常是我建議可以先做一次 MEAD 健康需求評估的族群：</p>
   <ul>
     <li>健檢報告正常，但長期感覺疲勞、體力透支</li>
@@ -187,7 +207,7 @@
 </div>
 
 <div class="wrap">
-  <div class="faq">
+  <div class="faq" id="faq">
     <h2>常見問題 FAQ</h2>
     <div class="qa">
       <p class="q">Q1：MEAD經絡檢測跟一般健檢有什麼不一樣？</p>

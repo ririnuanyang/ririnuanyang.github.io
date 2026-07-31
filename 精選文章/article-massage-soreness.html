@@ -58,6 +58,7 @@
   }
 
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{
     margin:0; color:var(--ink); background:var(--cream);
     font-family:"PingFang TC","Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;
@@ -89,7 +90,7 @@
 
   .art-body{padding-top:20px; padding-bottom:10px}
   .art-body p{margin-bottom:16px; font-size:1rem}
-  .art-body h2{font-size:1.28rem; color:var(--orange-deep); margin:34px 0 14px}
+  .art-body h2{font-size:1.28rem; color:var(--orange-deep); margin:34px 0 14px; scroll-margin-top:20px}
   @media (max-width:420px){ .art-body h2{font-size:1.14rem} }
   .art-body ul{margin:0 0 16px; padding-left:22px}
   .art-body li{margin-bottom:8px}
@@ -97,9 +98,16 @@
   .inline-link a{color:var(--orange-deep); font-weight:700; text-decoration:none}
   .inline-link a:hover{text-decoration:underline}
 
+  .toc{background:var(--card); border:1px solid var(--line-hair); border-radius:var(--radius); padding:20px 22px; margin:22px 0 8px; box-shadow:var(--shadow)}
+  .toc-title{font-weight:800; color:var(--orange-deep); font-size:.94rem; margin:0 0 10px}
+  .toc ol{margin:0; padding-left:20px}
+  .toc li{margin-bottom:7px; font-size:.96rem}
+  .toc a{color:var(--ink); text-decoration:none}
+  .toc a:hover{color:var(--orange-deep); text-decoration:underline}
+
   .faq{
     background:var(--card); border:1px solid var(--line-hair); border-radius:var(--radius);
-    padding:26px 24px; margin:30px 0; box-shadow:var(--shadow);
+    padding:26px 24px; margin:30px 0; box-shadow:var(--shadow); scroll-margin-top:20px;
   }
   .faq h2{font-size:1.28rem; color:var(--orange-deep); margin-bottom:16px}
   .qa{margin-bottom:18px}
@@ -153,11 +161,23 @@
 
   <p>「昨天才去按摩，今天肩膀怎麼反而更痠？」很多人按摩後都曾遇過這種情況，也會擔心是不是被按壞了。其實，大部分按摩後出現短暫痠感，都屬於常見反應。這篇文章想跟你聊聊反痠是不是正常的、什麼情況該留意，以及肩頸放鬆真正該注意的重點。</p>
 
-  <h2>按摩後反痠正常嗎？</h2>
+  <div class="toc">
+    <p class="toc-title">📖 本文目錄</p>
+    <ol>
+      <li><a href="#normal">按摩後反痠正常嗎？</a></li>
+      <li><a href="#why">為什麼肩頸按摩後會反痠？</a></li>
+      <li><a href="#care">按摩後可以怎麼照顧自己？</a></li>
+      <li><a href="#watch">什麼情況下的反痠需要多留意？</a></li>
+      <li><a href="#not-proof">反痠不是效果的證明</a></li>
+      <li><a href="#faq">常見問題 FAQ</a></li>
+    </ol>
+  </div>
+
+  <h2 id="normal">按摩後反痠正常嗎？</h2>
   <p>按摩後反痠是常見反應，大多數按摩後出現的痠感，都是身體對刺激的正常反應，不代表被按壞了。這種反應在肩頸按摩、筋膜放鬆這類針對緊繃部位的放鬆體驗中特別常見。</p>
   <p>按摩對肌肉和軟組織來說，本身就是一種刺激。尤其平常比較緊繃、較少被放鬆的部位，按摩後可能出現短暫的痠感，就像很久沒運動突然去爬山，隔天出現鐵腿一樣。平常越緊繃的地方，通常越有感。</p>
 
-  <h2>為什麼肩頸按摩後會反痠？</h2>
+  <h2 id="why">為什麼肩頸按摩後會反痠？</h2>
   <p>久坐上班族長期維持同一個姿勢，肩頸周圍的肌肉和軟組織容易處於緊繃狀態。當這些平常很少被放鬆的部位突然接受按摩刺激，短暫的痠感反應會比其他部位明顯。</p>
   <p>這種反應通常會隨著身體適應而慢慢緩解，實際恢復時間因人而異，跟個人體質和平常的緊繃程度有關。</p>
 
@@ -165,20 +185,20 @@
     如果你常常覺得肩頸緊繃、疲累，但健檢卻沒有明顯異常，也可以閱讀另一篇文章：<a href="article-mead.html">〈明明健檢正常，為什麼還是覺得疲累？認識 MEAD 經絡檢測〉</a>，了解健康管理可以從哪些面向開始觀察。
   </div>
 
-  <h2>按摩後可以怎麼照顧自己？</h2>
+  <h2 id="care">按摩後可以怎麼照顧自己？</h2>
   <p>按摩後如果出現輕微反痠，可以適度休息、補充水分，避免短時間內再進行高強度運動，讓身體有時間慢慢恢復。如果覺得肩頸仍有些緊繃，也可以透過輕鬆活動、伸展，幫助身體維持放鬆狀態。</p>
 
-  <h2>什麼情況下的反痠需要多留意？</h2>
+  <h2 id="watch">什麼情況下的反痠需要多留意？</h2>
   <p>大部分反痠可以自行緩解，但如果出現以下情況，建議找專業人員評估：痠感伴隨明顯疼痛、活動受限，出現大片或持續擴大的瘀青，或是過了好幾天都沒有改善。</p>
   <p>如果你本身就是容易瘀青的體質，偶爾出現小範圍瘀青不用太緊張，觀察它是否慢慢消退即可，不需要過度擔心。</p>
 
-  <h2>反痠不是效果的證明</h2>
+  <h2 id="not-proof">反痠不是效果的證明</h2>
   <p>這是很多人常有的按摩迷思：覺得「越痠代表越有效」。反痠可以是正常反應，但「越痠」不等於「越有效」。</p>
   <p>真正好的放鬆，不是把人按到受不了，而是依照每個人的身體狀況，選擇適合的力道，在舒服、安心的狀態下慢慢放鬆下來。放鬆不需要用痠來證明，這也是我在提供肩頸放鬆體驗時一直堅持的方向。</p>
 </div>
 
 <div class="wrap">
-  <div class="faq">
+  <div class="faq" id="faq">
     <h2>常見問題 FAQ</h2>
     <div class="qa">
       <p class="q">Q1：多久做一次肩頸放鬆比較合適？</p>
