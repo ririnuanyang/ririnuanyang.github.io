@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://ririnuanyang.github.io/</loc>
+    <lastmod>2026-08-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://ririnuanyang.github.io/posts.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ririnuanyang.github.io/%E7%B2%BE%E9%81%B8%E6%96%87%E7%AB%A0/20260805_%E8%85%B9%E7%9B%B4%E8%82%8C%E8%87%AA%E6%88%91%E6%AA%A2%E6%B8%AC/article-belly-causes.html</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ririnuanyang.github.io/%E7%B2%BE%E9%81%B8%E6%96%87%E7%AB%A0/20260801_MEAD%E7%B6%93%E7%B5%A1%E6%AA%A2%E6%B8%AC/article-mead.html</loc>
+    <lastmod>2026-08-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ririnuanyang.github.io/%E7%B2%BE%E9%81%B8%E6%96%87%E7%AB%A0/20260730_%E6%8C%89%E6%91%A9%E5%BE%8C%E5%8F%8D%E7%97%A0/article-massage-soreness.html</loc>
+    <lastmod>2026-07-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
