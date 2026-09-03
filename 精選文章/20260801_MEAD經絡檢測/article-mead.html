@@ -16,7 +16,8 @@
 <meta property="og:image:height" content="941">
 <link rel="canonical" href="https://ririnuanyang.github.io/精選文章/20260801_MEAD經絡檢測/article-mead.html">
 <link rel="icon" type="image/png" href="../../assets/sun.png">
-<style>:root{color-scheme:light}body{margin:0;padding:0}img{max-width:100%}</style>
+<style>:root{color-scheme:light}body{margin:0;padding:0}img{max-width:100%}footer .visit{margin:12px 0 0;font-size:.78rem;letter-spacing:.02em}footer .visit span{color:var(--orange);font-weight:700;font-variant-numeric:tabular-nums;margin:0 2px}
+</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LP4N3P92ZJ"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -356,7 +357,36 @@
 <footer class="wrap">
   <p class="foot-disc">日日暖陽提供健康促進與生活型態管理服務，非醫療診斷或治療；如有身體不適或疾病，仍建議就醫並諮詢醫師。</p>
   <p>© 2026 日日暖陽　·　高雄客製化健康管理</p>
+  <p class="visit" id="visit-line" style="display:none">網站瀏覽次數：<span id="visit-num"></span> 次</p>
+  <span id="busuanzi_value_site_pv" style="display:none"></span>
 </footer>
 
+<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script>
+  /* 網站瀏覽次數 = GA 已記錄的歷史基數 + 不蒜子從 2026-09-03 起的新增數
+     基數 621：GA 2026/6/1-9/3 全站瀏覽 624，扣掉不蒜子已有的 3 次測試打點
+     不蒜子若沒回應，至少顯示 GA 基數，不會出現壞掉的 0 */
+  (function(){
+    var BASE = 621, n = 0;
+    function show(v){
+      document.getElementById("visit-num").textContent = v.toLocaleString("en-US");
+      document.getElementById("visit-line").style.display = "block";
+    }
+    var t = setInterval(function(){
+      var el = document.getElementById("busuanzi_value_site_pv");
+      if (el && el.textContent.trim()) {
+        var add = parseInt(el.textContent.replace(/[^0-9]/g, ""), 10) || 0;
+        /* 保險：不蒜子依網域計數，在 localhost 或服務異常時會回傳別人的巨大數字。
+           超過 CAP 一律視為壞資料，只顯示 GA 基數。網站真的成長到接近 CAP 再把它調高。 */
+        var CAP = 50000;
+        show(add > CAP ? BASE : BASE + add);
+        clearInterval(t);
+      } else if (++n > 25) {
+        show(BASE);
+        clearInterval(t);
+      }
+    }, 400);
+  })();
+</script>
 </body>
 </html>
