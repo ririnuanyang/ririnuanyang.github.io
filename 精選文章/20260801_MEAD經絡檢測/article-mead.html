@@ -173,7 +173,8 @@
     color:var(--orange-deep); text-transform:uppercase; margin-bottom:12px;
   }
   .eyebrow::before{content:""; width:20px; height:2px; border-radius:2px; background:var(--orange)}
-  .art-head h1{font-size:1.7rem; line-height:1.4; margin-bottom:10px}
+  .art-head h1{font-size:1.7rem; line-height:1.4; margin-bottom:10px; word-break:keep-all; line-break:strict; overflow-wrap:break-word}
+  @media (max-width:420px){ .art-head h1{font-size:1.5rem} }
   .art-meta{color:var(--ink-soft); font-size:.86rem; font-weight:600}
   .cover{width:100%; aspect-ratio:16/9; object-fit:cover; object-position:center 42%; border-radius:var(--radius); box-shadow:var(--shadow); margin-top:18px}
 
@@ -241,7 +242,7 @@
 
 <div class="wrap art-head">
   <p class="eyebrow">健康知識分享</p>
-  <h1>明明健檢正常，<br>為什麼還是覺得疲累？<br>認識 MEAD 經絡檢測</h1>
+  <h1>明明健檢正常，<br>為什麼還是覺得疲累？<br><span style="white-space:nowrap">認識 MEAD 經絡檢測</span></h1>
   <p class="art-meta">日日暖陽・湯湯　｜　2026年7月</p>
   <img class="cover" src="article-mead-cover.png" alt="明明健檢正常卻還是疲累的日常情境">
 </div>
