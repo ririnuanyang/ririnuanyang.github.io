@@ -11,12 +11,12 @@
 <meta property="og:description" content="健康，從好好了解自己開始。先了解、不推銷，在高雄陪你好好認識自己的身體。">
 <meta property="og:url" content="https://ririnuanyang.github.io/">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://ririnuanyang.github.io/og-cover.png">
+<meta property="og:image" content="https://ririnuanyang.github.io/assets/og-cover.png">
 <meta property="og:image:width" content="2035">
 <meta property="og:image:height" content="773">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://ririnuanyang.github.io/">
-<link rel="icon" type="image/png" href="sun.png">
+<link rel="icon" type="image/png" href="assets/sun.png">
 <style>:root{color-scheme:light}body{margin:0;padding:0}img{max-width:100%}</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-LP4N3P92ZJ"></script>
 <script>
@@ -33,7 +33,7 @@
   "alternateName": "日日暖陽｜高雄客製化健康管理",
   "description": "高雄客製化健康管理服務，提供健康需求評估、MEAD 經絡能量分析、肩頸放鬆、腹直肌與臀盆體態調理，一人一方案、先了解不推銷。",
   "url": "https://ririnuanyang.github.io/",
-  "image": "https://ririnuanyang.github.io/sun-emblem.png",
+  "image": "https://ririnuanyang.github.io/assets/sun-emblem.png",
   "areaServed": {
     "@type": "City",
     "name": "高雄市"
@@ -301,10 +301,74 @@
     .reveal{opacity:0; transform:translateY(16px); transition:opacity .7s ease, transform .7s ease}
     .reveal.in{opacity:1; transform:none}
   }
+  /* ===== 吸頂導覽列 ===== */
+  .topnav{
+    position:sticky; top:0; z-index:60;
+    background:color-mix(in srgb, var(--cream) 90%, transparent);
+    backdrop-filter:saturate(140%) blur(10px);
+    -webkit-backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line-hair);
+  }
+  .topnav-in{max-width:1040px; margin:0 auto; padding:9px 16px; display:flex; align-items:center; gap:10px}
+  .nav-brand{display:flex; align-items:center; gap:7px; text-decoration:none; color:var(--ink); font-weight:800; font-size:.98rem; white-space:nowrap; flex:none}
+  .nav-brand img{width:26px; height:26px; display:block}
+  .nav-links{display:flex; align-items:center; gap:2px; flex:1; overflow-x:auto; scrollbar-width:none; -ms-overflow-style:none}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{
+    white-space:nowrap; text-decoration:none; color:var(--ink-soft);
+    font-weight:700; font-size:.92rem; padding:7px 11px; border-radius:999px;
+  }
+  .nav-links a:hover{color:var(--orange-deep); background:var(--cream-2)}
+  .nav-links a.is-post{color:var(--orange-deep)}
+  .nav-line{
+    flex:none; display:inline-flex; align-items:center; gap:5px; text-decoration:none;
+    background:linear-gradient(180deg, var(--orange), var(--orange-deep)); color:#fff;
+    font-weight:800; font-size:.9rem; padding:8px 15px; border-radius:999px;
+  }
+  section[id]{scroll-margin-top:64px}
+  @media (max-width:560px){
+    .nav-brand span{display:none}
+    .topnav-in{padding:8px 12px; gap:8px}
+    .nav-links a{padding:7px 9px; font-size:.88rem}
+    .nav-line{padding:8px 12px; font-size:.86rem}
+  }
+  /* 補回被導覽列佔掉的高度（hero-logo 有 -48px 負邊距，會鑽到 nav 底下）*/
+  .hero{padding-top:26px; padding-bottom:34px}
+  @media (max-width:560px){ .hero{padding-top:18px} }
+
+  /* ===== 首屏 banner ===== */
+  .hero-banner{margin:0 0 22px; border-radius:0}
+  .hero-banner img{width:100%; height:auto; display:block}
+  @media (min-width:900px){
+    .hero-banner{border-radius:22px; overflow:hidden; box-shadow:var(--shadow)}
+  }
+  .scroll-hint{display:block; margin-top:26px; font-size:.82rem; color:var(--ink-soft); letter-spacing:.06em}
+  .scroll-hint::after{content:"︾"; display:block; margin-top:2px; font-size:1rem; color:var(--orange)}
+
+  /* hero 次要連結 */
+  .hero-alt{display:block; margin-top:14px; font-size:.92rem; color:var(--ink-soft)}
+  .hero-alt a{color:var(--orange-deep); font-weight:800; text-decoration:none; border-bottom:2px solid color-mix(in srgb, var(--orange) 45%, transparent)}
+  .hero-alt a:hover{border-bottom-color:var(--orange-deep)}
 </style>
 
+<nav class="topnav">
+  <div class="topnav-in">
+    <a class="nav-brand" href="index.html"><img src="assets/sun-emblem.png" alt=""><span>日日暖陽</span></a>
+    <div class="nav-links">
+      <a href="#pick">服務項目</a>
+      <a href="#about">關於湯湯</a>
+      <a class="is-post" href="posts.html">精選文章</a>
+      <a href="#faq">常見問題</a>
+    </div>
+    <a class="nav-line" href="https://lin.ee/rbXTms6">＋ 加 LINE</a>
+  </div>
+</nav>
+
 <header class="hero wrap">
-  <h1 class="brand-logo"><span class="visually-hidden">日日暖陽｜高雄客製化健康管理・一人一方案</span><img class="hero-logo" src="logo.webp" alt="日日暖陽 高雄客製化健康管理"></h1>
+  <h1 class="visually-hidden">日日暖陽｜高雄客製化健康管理・一人一方案</h1>
+  <div class="hero-banner">
+    <img src="assets/hero-banner.jpg" alt="日日暖陽 陪你把照顧自己變成日常｜MEAD健康需求評估・肩頸舒緩・腹直肌體態美學" fetchpriority="high">
+  </div>
 
   <p class="lead">健康，<br>從好好了解自己開始。</p>
   <p class="sub">乙級體重管理師 × 英國國際CIP腹直肌產康師</p>
@@ -317,22 +381,24 @@
     <span class="ic">＋</span> 加 LINE，開始你的免費體驗
   </a>
   <span class="cta-note">高雄・免費體驗　·　不推銷、不用有壓力</span>
+  <span class="hero-alt">想先看看我寫的內容？<a href="posts.html">精選文章分享 →</a></span>
+  <span class="scroll-hint">往下看體驗內容</span>
 </header>
 
-<section class="wrap reveal">
+<section class="wrap reveal" id="pick">
   <span class="eyebrow">免費第一次體驗</span>
   <h2 class="title">想從哪裡開始，你來選</h2>
   <p class="section-sub">第一次來，免費體驗一種　·　高雄　·　不推銷、不用有壓力</p>
   <div class="pick">
     <div class="pick-card">
-      <img class="pick-photo" src="mead.jpg" alt="MEAD 健康需求評估經絡量測過程" loading="lazy" style="object-position:center 42%">
+      <img class="pick-photo" src="assets/mead.jpg" alt="MEAD 健康需求評估經絡量測過程" loading="lazy" style="object-position:center 42%">
       <span class="pick-tag">想先了解自己</span>
       <h3>🩵 MEAD 健康需求評估</h3>
       <p>一起看你的作息、睡眠、壓力和身體狀況，找到適合你的方向。先搞懂你需要什麼，再談其他。</p>
       <span class="disc">＊MEAD 為健康管理輔助工具，非醫療診斷或治療。</span>
     </div>
     <div class="pick-card">
-      <img class="pick-photo" src="experience2.jpg" alt="肩頸放鬆體驗雲朵機儀器" loading="lazy" style="object-position:center 32%">
+      <img class="pick-photo" src="assets/experience2.jpg" alt="肩頸放鬆體驗雲朵機儀器" loading="lazy" style="object-position:center 32%">
       <span class="pick-tag">想先放鬆有感</span>
       <h3>☁️ 肩頸放鬆體驗</h3>
       <p>用大家暱稱為「雲朵機／海豚機」的儀器，陪你慢慢放鬆緊繃了一整天的肩頸。許多人體驗後，都覺得舒服了不少。</p>
@@ -400,11 +466,11 @@
   </div>
 </section>
 
-<section class="wrap reveal">
+<section class="wrap reveal" id="about">
   <span class="eyebrow">關於日日暖陽</span>
   <div class="about">
     <div class="who">
-      <div class="avatar"><img src="sun-emblem.png" alt="日日暖陽微笑太陽"></div>
+      <div class="avatar"><img src="assets/sun-emblem.png" alt="日日暖陽微笑太陽"></div>
       <div>
         <h3>嗨，我是湯湯</h3>
         <span>乙級體重管理師 × 英國國際CIP腹直肌產康師</span>
@@ -452,7 +518,7 @@
   <p class="quotes-note">以上為顧客個人真實體驗的感受分享，非療效保證，實際感受因人而異。</p>
 </section>
 
-<section class="wrap reveal">
+<section class="wrap reveal" id="faq">
   <span class="eyebrow">常見問題</span>
   <h2 class="title">預約前，先看這裡</h2>
   <div class="faq">
