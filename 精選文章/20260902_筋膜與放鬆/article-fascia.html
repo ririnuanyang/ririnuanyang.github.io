@@ -173,7 +173,8 @@
     color:var(--orange-deep); text-transform:uppercase; margin-bottom:12px;
   }
   .eyebrow::before{content:""; width:20px; height:2px; border-radius:2px; background:var(--orange)}
-  .art-head h1{font-size:1.7rem; line-height:1.4; margin-bottom:10px}
+  .art-head h1{font-size:1.7rem; line-height:1.4; margin-bottom:10px; word-break:keep-all; line-break:strict; overflow-wrap:break-word}
+  @media (max-width:420px){ .art-head h1{font-size:1.5rem} }
   .art-meta{color:var(--ink-soft); font-size:.86rem; font-weight:600}
   .cover{width:100%; aspect-ratio:16/9; object-fit:cover; object-position:center 42%; border-radius:var(--radius); box-shadow:var(--shadow); margin-top:18px}
 
@@ -247,7 +248,7 @@
 
 <div class="wrap art-head">
   <p class="eyebrow">健康知識分享</p>
-  <h1>肩頸的緊，其實不只是肌肉<span style="display:block; font-size:.72em; color:var(--ink-soft); font-weight:700; margin-top:8px">搞懂筋膜再來談放鬆</span></h1>
+  <h1>肩頸的緊，<span style="white-space:nowrap">其實不只是肌肉</span><span style="display:block; font-size:.72em; color:var(--ink-soft); font-weight:700; margin-top:8px">搞懂筋膜再來談放鬆</span></h1>
   <p class="art-meta">日日暖陽・湯湯　｜　2026年9月</p>
   <img class="cover" src="article-fascia-cover.png" alt="肩頸筋膜緊繃與放鬆的衛教說明情境">
 </div>
