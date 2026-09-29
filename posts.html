@@ -111,6 +111,9 @@
     background:var(--orange-deep); padding:4px 12px; border-radius:999px; margin-bottom:12px; margin-left:8px;
   }
   .art-card h2{font-size:1.22rem; margin-bottom:8px; color:var(--ink); text-wrap:wrap}
+  .art-card .card-body{container-type:inline-size}
+  .art-card h2.fit{font-size:min(1.22rem, calc(100cqw / var(--n)))}
+  .art-card .nw{white-space:nowrap}
   .art-card p{color:var(--ink-soft); font-size:.95rem; margin-bottom:10px}
   .art-card .read-more{color:var(--orange-deep); font-weight:700; font-size:.9rem}
 
@@ -154,7 +157,7 @@
   <a class="art-card" href="精選文章/20260805_腹直肌自我檢測/article-belly-causes.html">
     <div class="card-body">
       <span class="tag">健康知識</span>
-      <h2>小腹凸出是「腹直肌分離」嗎？自我檢測方法與判讀</h2>
+      <h2 class="fit" style="--n:14.5"><span class="nw">小腹凸出是「腹直肌分離」？</span><br><span class="nw">自我檢測方法與判讀</span></h2>
       <p>肚子中間鬆鬆的、生完很久還是回不去？認識腹直肌分離是什麼、在家怎麼自我檢測，找到適合自己的照顧方向。</p>
       <span class="read-more">閱讀全文 →</span>
     </div>
@@ -162,7 +165,7 @@
   <a class="art-card" href="精選文章/20260801_MEAD經絡檢測/article-mead.html">
     <div class="card-body">
       <span class="tag">健康知識</span>
-      <h2>明明健檢正常，為什麼還是覺得疲累？認識 MEAD <span style="white-space:nowrap">經絡檢測</span></h2>
+      <h2 class="fit" style="--n:17"><span class="nw">明明報告正常，為什麼還是覺得累？</span><br><span class="nw">認識 MEAD經絡檢測</span></h2>
       <p>健檢正常不代表不需要照顧身體，了解MEAD經絡檢測如何評估身體能量狀態，找到自我照顧的方向。</p>
       <span class="read-more">閱讀全文 →</span>
     </div>
