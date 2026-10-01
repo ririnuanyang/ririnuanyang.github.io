@@ -188,6 +188,9 @@
   }
   .pick-tag::before{content:""; width:8px; height:8px; border-radius:50%; background:var(--orange); flex:0 0 auto}
   .pick-card h3{font-size:1.16rem; margin:0 0 8px}
+  a.pick-link{text-decoration:none; color:inherit; transition:transform .18s ease}
+  a.pick-link:hover{transform:translateY(-3px)}
+  .pick-card .read-more{color:var(--orange-deep); font-weight:700; font-size:.92rem; margin:0 0 12px}
   .pick-card p{color:var(--ink-soft); font-size:.96rem; flex:1 1 auto}
   .pick-note{text-align:center; color:var(--ink-soft); font-size:.86rem; margin:18px 0 0}
   .pick-cta{text-align:center; margin-top:20px}
@@ -388,13 +391,14 @@
   <h2 class="title">想從哪裡開始，你來選</h2>
   <p class="section-sub">第一次來，免費體驗一種　·　高雄　·　不推銷、不用有壓力</p>
   <div class="pick">
-    <div class="pick-card">
+    <a class="pick-card pick-link" href="精選文章/20260801_MEAD經絡檢測/article-mead.html">
       <img class="pick-photo" src="assets/mead.jpg" alt="MEAD 健康需求評估經絡量測過程" loading="lazy" style="object-position:center 42%">
       <span class="pick-tag">想先了解自己</span>
       <h3>🩵 MEAD 健康需求評估</h3>
       <p>一起看你的作息、睡眠、壓力和身體狀況，找到適合你的方向。先搞懂你需要什麼，再談其他。</p>
+      <span class="read-more">了解 MEAD 是什麼 →</span>
       <span class="disc">＊MEAD 為健康管理輔助工具，非醫療診斷或治療。</span>
-    </div>
+    </a>
     <div class="pick-card">
       <img class="pick-photo" src="assets/experience2.jpg" alt="肩頸放鬆體驗雲朵機儀器" loading="lazy" style="object-position:center 32%">
       <span class="pick-tag">想先放鬆有感</span>
