@@ -24,7 +24,8 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-LP4N3P92ZJ');
+  /* 只在正式網站記錄，本機預覽不送 GA，避免自己的瀏覽灌水 */
+  if (location.hostname === 'ririnuanyang.github.io') gtag('config', 'G-LP4N3P92ZJ');
 </script>
 <script type="application/ld+json">
 {
