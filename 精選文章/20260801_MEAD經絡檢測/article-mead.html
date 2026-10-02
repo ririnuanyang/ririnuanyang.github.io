@@ -366,27 +366,37 @@
 <script>
   /* 網站瀏覽次數 = GA 已記錄的歷史基數 + 不蒜子從 2026-09-03 起的新增數
      基數 621：GA 2026/6/1-9/3 全站瀏覽 624，扣掉不蒜子已有的 3 次測試打點
-     不蒜子若沒回應，至少顯示 GA 基數，不會出現壞掉的 0 */
+     2026-10-02 修正：不蒜子常常很慢或暫時連不上，舊寫法等 10 秒就退回只顯示 621，看起來像數字倒退。
+     現在：讀到就記在這台裝置；連不上時先顯示上次記住的數字，沒記過就先不顯示；
+     不蒜子晚到也會接住更新，數字只會往上，不會再跳回 621。 */
   (function(){
-    var BASE = 621, n = 0;
+    var BASE = 621, KEY = "rrny_site_pv";
+    /* 保險：不蒜子依網域計數，在 localhost 或服務異常時會回傳別人的巨大數字。
+       超過 CAP 一律視為壞資料、不採用。網站真的成長到接近 CAP 再把它調高。 */
+    var CAP = 50000;
     function show(v){
       document.getElementById("visit-num").textContent = v.toLocaleString("en-US");
       document.getElementById("visit-line").style.display = "block";
     }
-    var t = setInterval(function(){
-      var el = document.getElementById("busuanzi_value_site_pv");
-      if (el && el.textContent.trim()) {
-        var add = parseInt(el.textContent.replace(/[^0-9]/g, ""), 10) || 0;
-        /* 保險：不蒜子依網域計數，在 localhost 或服務異常時會回傳別人的巨大數字。
-           超過 CAP 一律視為壞資料，只顯示 GA 基數。網站真的成長到接近 CAP 再把它調高。 */
-        var CAP = 50000;
-        show(add > CAP ? BASE : BASE + add);
-        clearInterval(t);
-      } else if (++n > 25) {
-        show(BASE);
-        clearInterval(t);
+    var last = 0;
+    try { last = parseInt(localStorage.getItem(KEY), 10) || 0; } catch (e) {}
+    if (last > BASE) show(last);
+    var el = document.getElementById("busuanzi_value_site_pv");
+    function check(){
+      if (!el || !el.textContent.trim()) return false;
+      var add = parseInt(el.textContent.replace(/[^0-9]/g, ""), 10) || 0;
+      if (add > CAP) return true;
+      var v = BASE + add;
+      if (v >= last) {
+        show(v);
+        try { localStorage.setItem(KEY, String(v)); } catch (e) {}
       }
-    }, 400);
+      return true;
+    }
+    if (el && !check()) {
+      var mo = new MutationObserver(function(){ if (check()) mo.disconnect(); });
+      mo.observe(el, {childList: true, characterData: true, subtree: true});
+    }
   })();
 </script>
 </body>
