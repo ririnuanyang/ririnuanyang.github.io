@@ -364,44 +364,34 @@
   <p class="foot-disc">日日暖陽提供健康促進與生活型態管理服務，非醫療診斷或治療；如有身體不適或疾病，仍建議就醫並諮詢醫師。</p>
   <p>© 2026 日日暖陽　·　高雄客製化健康管理</p>
   <p class="visit" id="visit-line" style="display:none">網站瀏覽次數：<span id="visit-num"></span> 次</p>
-  <span id="busuanzi_value_site_pv" style="display:none"></span>
 </footer>
 
-<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script data-goatcounter="https://ririnuanyang.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script>
-  /* 網站瀏覽次數 = GA 已記錄的歷史基數 + 不蒜子從 2026-09-03 起的新增數
-     基數 621：GA 2026/6/1-9/3 全站瀏覽 624，扣掉不蒜子已有的 3 次測試打點
-     2026-10-02 修正：不蒜子常常很慢或暫時連不上，舊寫法等 10 秒就退回只顯示 621，看起來像數字倒退。
-     現在：讀到就記在這台裝置；連不上時先顯示上次記住的數字，沒記過就先不顯示；
-     不蒜子晚到也會接住更新，數字只會往上，不會再跳回 621。 */
+  /* 網站瀏覽次數（2026-10-03 起改用 GoatCounter；不蒜子 10/2 起伺服器 502 當機）
+     BASE＝換過去當下的總瀏覽數（GA 歷史 621＋不蒜子到 10/2 的新增），之後加上 GoatCounter 的累計瀏覽數。
+     讀到就記在這台裝置；連不上時先顯示上次記住的，沒記過就先不顯示；數字只往上。 */
   (function(){
-    var BASE = 621, KEY = "rrny_site_pv";
-    /* 保險：不蒜子依網域計數，在 localhost 或服務異常時會回傳別人的巨大數字。
-       超過 CAP 一律視為壞資料、不採用。網站真的成長到接近 CAP 再把它調高。 */
-    var CAP = 50000;
+    var BASE = 1121, KEY = "rrny_site_pv";
     function show(v){
       document.getElementById("visit-num").textContent = v.toLocaleString("en-US");
       document.getElementById("visit-line").style.display = "block";
     }
     var last = 0;
     try { last = parseInt(localStorage.getItem(KEY), 10) || 0; } catch (e) {}
-    if (last > BASE) show(last);
-    var el = document.getElementById("busuanzi_value_site_pv");
-    function check(){
-      if (!el || !el.textContent.trim()) return false;
-      var add = parseInt(el.textContent.replace(/[^0-9]/g, ""), 10) || 0;
-      if (add > CAP) return true;
-      var v = BASE + add;
-      if (v >= last) {
-        show(v);
-        try { localStorage.setItem(KEY, String(v)); } catch (e) {}
-      }
-      return true;
-    }
-    if (el && !check()) {
-      var mo = new MutationObserver(function(){ if (check()) mo.disconnect(); });
-      mo.observe(el, {childList: true, characterData: true, subtree: true});
-    }
+    if (last >= BASE) show(last);
+    fetch("https://ririnuanyang.goatcounter.com/counter/TOTAL.json")
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){
+        if (!d) return;
+        var add = parseInt(String(d.count).replace(/[^0-9]/g, ""), 10) || 0;
+        var v = BASE + add;
+        if (v >= last) {
+          show(v);
+          try { localStorage.setItem(KEY, String(v)); } catch (e) {}
+        }
+      })
+      .catch(function(){});
   })();
 </script>
 </body>
