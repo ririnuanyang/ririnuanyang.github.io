@@ -284,6 +284,11 @@
   .xp-cards .xp-img{display:block; width:calc(100% + 44px); max-width:none; margin:-30px -22px 22px; aspect-ratio:4/3; object-fit:cover}
   .xp-cards h3{font-size:1.35rem; color:var(--main); margin:10px 0 8px}
   .xp-cards p{color:var(--ink-2); line-height:1.8}
+  .xp-cards .cat{color:var(--ink-2); font-size:.85rem; letter-spacing:.08em; margin:-4px 0 12px}
+  .xp-cards .hook{color:var(--ink); font-weight:700; font-size:1.05rem; margin:0 0 12px}
+  .xp-cards ul{list-style:none; padding:0; margin:0 auto; display:inline-block; text-align:left; color:var(--ink-2); line-height:1.75}
+  .xp-cards li{position:relative; padding-left:1.1em; margin:4px 0}
+  .xp-cards li::before{content:""; position:absolute; left:0; top:.68em; width:6px; height:6px; border-radius:50%; background:var(--main)}
   .tag-sm{display:inline-block; background:var(--butter); color:var(--main); font-size:.82rem; font-weight:700; padding:3px 12px; border-radius:999px}
   @media (max-width:760px){ .xp-cards{grid-template-columns:1fr; gap:14px} .xp-hero .collage > div:last-child{text-align:center} }
 </style>
@@ -322,9 +327,9 @@
   <div class="wrap">
     <div class="head"><h2>三台機器，照顧臉也照顧身體</h2></div>
     <div class="xp-cards">
-      <div><img class="xp-img" src="assets/machine-wash.jpg?v=1012c" alt="在浴室用洗臉機洗臉的背影" loading="lazy" style="object-position:center 45%" onerror="this.remove()"><span class="tag-sm">臉部</span><h3>洗臉機</h3><p>臉部清潔保養，<br>洗完很清爽</p></div>
-      <div><img class="xp-img" src="assets/machine-magnetic.jpg?v=1012c" alt="坐在梳妝台前，手拿鎂光機準備保養的背影" loading="lazy" style="object-position:center 45%" onerror="this.remove()"><span class="tag-sm">臉部</span><h3>鎂光機</h3><p>臉部亮澤、保濕、<br>緊緻保養</p></div>
-      <div><img class="xp-img" src="assets/experience-hero.jpg?v=1012c" alt="手拿雲朵機，後方是穿浴袍放鬆坐著的客人" loading="lazy" style="object-position:center" onerror="this.remove()"><span class="tag-sm">肩頸・身體</span><h3>雲朵機</h3><p>肩頸與身體舒緩</p></div>
+      <div><img class="xp-img" src="assets/machine-wash.jpg?v=1012c" alt="在浴室用洗臉機洗臉的背影" loading="lazy" style="object-position:center 45%" onerror="this.remove()"><span class="tag-sm">臉部</span><h3>洗臉機</h3><p class="cat">潔顏按摩儀</p><p class="hook">洗完臉，還是覺得悶悶的？</p><ul><li>導頭反向轉動，潔顏同時按摩臉部</li><li>不是刷毛，觸感細緻滑順</li><li>洗完肌膚柔嫩、平滑，透出光采</li></ul></div>
+      <div><img class="xp-img" src="assets/machine-magnetic.jpg?v=1012c" alt="坐在梳妝台前，手拿鎂光機準備保養的背影" loading="lazy" style="object-position:center 45%" onerror="this.remove()"><span class="tag-sm">臉部</span><h3>鎂光機</h3><p class="cat">臉部保養儀</p><p class="hook">下班照鏡子，氣色有點累？</p><ul><li>小小一台，兩根手指就握得住</li><li>搭配專屬精華，一起做臉部保養</li><li>讓肌膚看起來亮澤、保濕、有緊緻感</li></ul></div>
+      <div><img class="xp-img" src="assets/experience-hero.jpg?v=1012c" alt="手拿雲朵機，後方是穿浴袍放鬆坐著的客人" loading="lazy" style="object-position:center" onerror="this.remove()"><span class="tag-sm">肩頸・身體</span><h3>雲朵機</h3><p class="cat">美體保養儀</p><p class="hook">坐一整天，肩頸卡卡的？</p><ul><li>四個導頭貼著皮膚，像四根指腹一起貼上來</li><li>智慧偵測，依部位自動調整，不用自己調強弱</li><li>不是那種會震的按摩器，躺著放鬆就好</li></ul></div>
     </div>
     <p class="note" style="text-align:center; margin-top:28px">＊三機體驗為放鬆與保養的體驗，<span style="display:inline-block">感受因人而異，非醫療行為。</span></p>
   </div>
