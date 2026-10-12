@@ -266,6 +266,14 @@
     .snav-links a:last-child{border-bottom:0}
   }
 </style>
+<style id="article-bg-1012">
+  /* 文章內頁：跟精選文章列表同一個淡紫底色，不要全白 */
+  :root, :root[data-theme="light"]{ --page-bg:#F3F0FA; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ --page-bg:#1C1A27; } }
+  :root[data-theme="dark"]{ --page-bg:#1C1A27; }
+  body{background:var(--page-bg) !important}
+</style>
+
 <nav class="snav">
   <div class="snav-in">
     <a class="snav-logo" href="../../index.html"><img src="../../assets/sun-logo.png" alt="">日日暖陽</a>
