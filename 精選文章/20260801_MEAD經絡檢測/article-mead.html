@@ -237,6 +237,54 @@
   footer{padding:20px 0 50px; text-align:center; color:var(--ink-soft); font-size:.8rem; line-height:1.7}
   footer .foot-disc{max-width:34em; font-size:.78rem; text-wrap:balance; margin:0 auto 14px}
 </style>
+<style id="theme-1012">
+  /* 2026-10-12 官網改版：文章頁改用新版紫色系（覆蓋舊橘色變數），加上跟首頁一樣的導覽列 */
+  :root, :root[data-theme="light"]{ color-scheme:light; --cream:#FFFFFF; --cream-2:#EEEAF8; --card:#FFFFFF; --orange:#4A3B8C; --orange-deep:#3B2E73; --coral:#D9D0F5; --sage:#CFE3F0; --sun:#F2C744; --sun-soft:#FBF1C7; --ink:#2B2840; --ink-soft:#6B6880; --line-hair:#E6E3EE; --leaf:#CFE3F0; --shadow:none; --main:#4A3B8C; --main-hover:#3B2E73; --lav:#EEEAF8; --line:#E6E3EE; --paper:#FFFFFF; --ink-2:#6B6880; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ color-scheme:dark; --cream:#16141F; --cream-2:#221E36; --card:#1C1A27; --orange:#A897F0; --orange-deep:#BBADF5; --coral:#3A3360; --sage:#18232F; --sun:#E7BF45; --sun-soft:#2B2716; --ink:#EDEBF7; --ink-soft:#AAA6BF; --line-hair:#34304A; --leaf:#18232F; --shadow:none; --main:#A897F0; --main-hover:#BBADF5; --lav:#221E36; --line:#34304A; --paper:#16141F; --ink-2:#AAA6BF; } }
+  :root[data-theme="dark"]{ color-scheme:dark; --cream:#16141F; --cream-2:#221E36; --card:#1C1A27; --orange:#A897F0; --orange-deep:#BBADF5; --coral:#3A3360; --sage:#18232F; --sun:#E7BF45; --sun-soft:#2B2716; --ink:#EDEBF7; --ink-soft:#AAA6BF; --line-hair:#34304A; --leaf:#18232F; --shadow:none; --main:#A897F0; --main-hover:#BBADF5; --lav:#221E36; --line:#34304A; --paper:#16141F; --ink-2:#AAA6BF; }
+  body{background-image:none !important; background:var(--cream) !important}
+  .cta{background:var(--orange) !important; box-shadow:none !important}
+  .cta:hover{background:var(--orange-deep) !important}
+  .snav{position:sticky; top:0; z-index:50; background:var(--paper); border-bottom:1px solid var(--line); font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif; line-height:1.6}
+  .snav-in{max-width:1180px; margin:0 auto; padding:12px 20px; display:flex; align-items:center; gap:18px; position:relative}
+  .snav-logo{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--ink); font-weight:700; font-size:1.3rem; letter-spacing:.1em; white-space:nowrap}
+  .snav-logo img{width:44px; height:44px}
+  .snav-links{display:flex; gap:22px; margin-left:auto}
+  .snav-links a{text-decoration:none; color:var(--ink-2); font-size:.92rem}
+  .snav-links a:hover{color:var(--main)}
+  .snav-btn{display:inline-flex; align-items:center; background:var(--main); color:#fff; text-decoration:none; font-weight:700; letter-spacing:.08em; padding:7px 18px; font-size:.88rem; border-radius:999px}
+  .snav-btn:hover{background:var(--main-hover)}
+  .snav-menu{display:none}
+  @media (max-width:820px){
+    .snav-logo{font-size:1.15rem; gap:8px} .snav-logo img{width:38px; height:38px}
+    .snav-btn{margin-left:auto}
+    .snav-menu{display:grid; gap:5px; place-content:center; width:42px; height:42px; border:0; border-radius:10px; background:var(--lav); cursor:pointer; flex:none}
+    .snav-menu span{display:block; width:20px; height:2px; background:var(--main); border-radius:2px; transition:transform .2s, opacity .2s}
+    .snav.open .snav-menu span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .snav.open .snav-menu span:nth-child(2){opacity:0}
+    .snav.open .snav-menu span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .snav-links{display:none; position:absolute; top:100%; left:0; right:0; flex-direction:column; gap:0; margin:0; background:var(--paper); border-bottom:1px solid var(--line); box-shadow:0 12px 24px rgba(0,0,0,.06); padding:6px 20px 14px}
+    .snav.open .snav-links{display:flex}
+    .snav-links a{padding:13px 4px; font-size:1rem; color:var(--ink); border-bottom:1px solid var(--line)}
+    .snav-links a:last-child{border-bottom:0}
+  }
+</style>
+<nav class="snav">
+  <div class="snav-in">
+    <a class="snav-logo" href="../../index.html"><img src="../../assets/sun-logo.png" alt="">日日暖陽</a>
+    <div class="snav-links">
+      <a href="../../index.html#pain">常見困擾</a>
+      <a href="../../index.html#how">健康評估</a>
+      <a href="../../index.html#about">關於湯湯</a>
+      <a href="../../experience.html">三機體驗</a>
+      <a href="../../posts.html">精選文章</a>
+      <a href="../../index.html#faq">常見問題</a>
+    </div>
+    <a class="snav-btn" href="../../survey.html">預約</a>
+    <button class="snav-menu" type="button" aria-label="開啟選單" aria-expanded="false" onclick="var n=this.closest('.snav');var o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
 
 <div class="wrap topbar">
   <a class="back" href="../../posts.html">← 回精選文章</a>
@@ -338,7 +386,7 @@
       <li>想開始照顧自己卻不知道從哪開始</li>
     </ul>
     <p class="sub" style="margin-bottom:20px">歡迎預約日日暖陽的 MEAD 健康需求評估。我們會陪你一起了解目前的身體能量狀態，並依照生活型態提供健康管理方向的參考。不是推銷，而是陪你一起，把照顧自己變成日常。</p>
-    <a class="cta" href="https://lin.ee/rbXTms6"><span>＋</span> 加 LINE 預約諮詢</a>
+    <a class="cta" href="../../survey.html?p=inner">預約健康評估</a>
     <span class="disc">＊MEAD為健康管理輔助工具，非醫療診斷或治療；如有疾病或身體不適，仍應尋求醫師等專業醫療人員協助。</span>
   </div>
 
