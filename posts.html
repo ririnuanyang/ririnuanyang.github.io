@@ -157,6 +157,17 @@
     .snav-links a:last-child{border-bottom:0}
   }
 </style>
+<style id="posts-bg-1012">
+  /* 精選文章列表：淡紫底＋白卡片，卡片上緣輪流用淡紫／淡藍／奶油黃（Kamee 粉彩輪替），不要全白太單調 */
+  :root, :root[data-theme="light"]{ --page-bg:#F3F0FA; --acc1:#CFC4F2; --acc2:#BFDDF0; --acc3:#F5DF8A; }
+  @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){ --page-bg:#1C1A27; --acc1:#4A3F7A; --acc2:#244055; --acc3:#5A4E22; } }
+  :root[data-theme="dark"]{ --page-bg:#1C1A27; --acc1:#4A3F7A; --acc2:#244055; --acc3:#5A4E22; }
+  body{background:var(--page-bg) !important}
+  .art-card{background:var(--card) !important; border:0 !important; border-top:8px solid var(--acc1) !important}
+  .art-card:nth-child(3n+2){border-top-color:var(--acc2) !important}
+  .art-card:nth-child(3n){border-top-color:var(--acc3) !important}
+</style>
+
 <nav class="snav">
   <div class="snav-in">
     <a class="snav-logo" href="index.html"><img src="assets/sun-logo.png" alt="">日日暖陽</a>
