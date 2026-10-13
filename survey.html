@@ -659,6 +659,7 @@
     var m = form.querySelector('.sv-more[data-for="' + n + '"]'), t = m ? m.value.trim() : '';
     return vals(n).map(function(v){ return v === '其他' && t ? '其他（' + t + '）' : v; }).join('、');
   }
+  function rankLines(n){ return rankText(n).split('　').join('\n'); }
   function rankText(n){
     var m = form.querySelector('.sv-more[data-for="' + n + '"]'), t = m ? m.value.trim() : '';
     return RANK[n].length ? RANK[n].map(function(v, k){ return (k + 1) + '. ' + (v === '其他' && t ? '其他（' + t + '）' : v); }).join('　') : '未填';
@@ -741,14 +742,14 @@
     var cols = {route:'', top:[], want:[], when:val('when'), age:val('age'), work:val('work'), contact:way + '：' + contact};
     var wishTxt = document.getElementById('sv-wish').value.trim();
     if (path === '健康評估'){
-      cols.route = '健康評估'; cols.top.push(rankText('inner_pain'));
+      cols.route = '健康評估'; cols.top.push(rankLines('inner_pain'));
     } else {
       var ps = vals('outer_part'); cols.route = '三機體驗：' + ps.join('、');
-      if (ps.indexOf('臉部') > -1){ cols.top.push('臉部：' + rankText('face_state')); if (vals('face_want').length) cols.want.push('臉部想加強：' + withMore('face_want')); }
-      if (ps.indexOf('身體') > -1){ cols.top.push('身體緊繃：' + withMore('body_area')); }
+      if (ps.indexOf('臉部') > -1){ cols.top.push('【臉部】\n' + rankLines('face_state')); if (vals('face_want').length) cols.want.push('臉部想加強：' + withMore('face_want')); }
+      if (ps.indexOf('身體') > -1){ cols.top.push('【身體緊繃部位】\n' + withMore('body_area')); }
     }
     if (wishTxt) cols.want.push('最想做的事：' + wishTxt);
-    cols.top = cols.top.join('／'); cols.want = cols.want.join('／');
+    cols.top = cols.top.join('\n'); cols.want = cols.want.join('\n');
     Object.keys(F_COLS).forEach(function(k){ if (cols[k]) fd.append(F_COLS[k], cols[k]); });
     fetch(ACTION, {method:'POST', mode:'no-cors', body:fd}).then(done, function(){
       btn.disabled = false; btn.textContent = '送出問卷';
