@@ -451,16 +451,16 @@
             <label><input type="radio" name="body_sit" value="4–8 小時"><span>4–8 小時</span></label>
             <label><input type="radio" name="body_sit" value="超過 8 小時"><span>超過 8 小時</span></label>
           </div>
-          <p class="sv-q">最在意的是？<small>可複選</small></p>
+          <p class="sv-q">你希望的放鬆是什麼樣子？<small>可複選</small></p>
           <div class="sv-opts">
-            <label><input type="checkbox" name="body_care" value="沒時間好好放鬆"><span>沒時間好好放鬆</span></label>
-            <label><input type="checkbox" name="body_care" value="想找在家也能做的舒緩方式"><span>想找在家也能做的舒緩方式</span></label>
-            <label><input type="checkbox" name="body_care" value="下班後很累、壓力大，想好好休息"><span>下班後很累、壓力大，想好好休息</span></label>
-            <label><input type="checkbox" name="body_care" value="喜歡溫和、不會痛的放鬆方式"><span>喜歡溫和、不會痛的放鬆方式</span></label>
-            <label><input type="checkbox" name="body_care" value="想養成固定照顧自己的習慣"><span>想養成固定照顧自己的習慣</span></label>
+            <label><input type="checkbox" name="body_care" value="忙裡偷閒，短時間就能放鬆一下"><span>忙裡偷閒，短時間就能放鬆一下</span></label>
+            <label><input type="checkbox" name="body_care" value="在家自己也能做"><span>在家自己也能做</span></label>
+            <label><input type="checkbox" name="body_care" value="下班後好好休息、喘口氣"><span>下班後好好休息、喘口氣</span></label>
+            <label><input type="checkbox" name="body_care" value="溫和、不會痛"><span>溫和、不會痛</span></label>
+            <label><input type="checkbox" name="body_care" value="能固定照顧自己，不是偶爾才做"><span>能固定照顧自己，不是偶爾才做</span></label>
             <label><input type="checkbox" name="body_care" value="其他"><span>其他</span></label>
           </div>
-          <input class="sv-input sv-more" type="text" maxlength="100" data-for="body_care" data-show="其他" data-label="身體其他" placeholder="寫一下你在意的事" hidden>
+          <input class="sv-input sv-more" type="text" maxlength="100" data-for="body_care" data-show="其他" data-label="希望的放鬆其他" placeholder="寫一下你希望的放鬆" hidden>
         </div>
         <p class="sv-err" id="err-outer"></p>
         <div class="sv-nav"><button type="button" class="btn ghost" data-back>上一步</button><button type="button" class="btn" data-next>下一步</button></div>
@@ -720,7 +720,7 @@
       if (parts.indexOf('身體') > -1){
         lines.push('【身體】緊繃部位：' + vals('body_area').join('、'));
         lines.push('【身體】每天坐多久：' + (val('body_sit') || '未填'));
-        lines.push('【身體】在意的事：' + (vals('body_care').join('、') || '未填'));
+        lines.push('【身體】希望的放鬆：' + (vals('body_care').join('、') || '未填'));
       }
     }
     [].forEach.call(form.querySelectorAll('.sv-more'), function(m){
