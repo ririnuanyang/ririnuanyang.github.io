@@ -465,8 +465,8 @@
 
       <!-- 第 3 頁：共同 -->
       <section class="sv-step" data-step="end" hidden>
-        <p class="sv-q">剛剛勾的狀況裡，最想先處理的前三名？<small>依序點選，最多 3 個</small></p>
-        <div class="sv-opts" id="sv-top"></div>
+        <p class="sv-q" id="sv-top-q">剛剛勾的狀況裡，最想先處理的前三名？<small>依序點選，最多 3 個</small></p>
+        <div id="sv-top"></div>
         <p class="sv-q">這個狀況最影響你什麼？<small>可複選</small></p>
         <div class="sv-opts row">
           <label><input type="checkbox" name="impact" value="工作時的專注"><span>工作時的專注</span></label>
@@ -584,44 +584,52 @@
     if (to === 'end') buildTop();
     history.push(to); show(to);
   }
+  /* 前三名：臉部、身體都勾時拆成兩組，各自排序 */
   function picked(){
-    if (val('path') === '健康評估') return vals('inner_pain').filter(function(v){ return v !== '其他'; });
+    var no = function(v){ return v !== '其他'; };
+    if (val('path') === '健康評估') return [{g:'all', items:vals('inner_pain').filter(no)}];
     var parts = vals('outer_part'), out = [];
-    if (parts.indexOf('臉部') > -1) out = out.concat(vals('face_state').filter(function(v){ return v !== '其他'; }).map(function(v){ return '臉部：' + v; }));
-    if (parts.indexOf('身體') > -1) out = out.concat(vals('body_area').map(function(v){ return v + '緊繃'; }));
-    return out;
+    if (parts.indexOf('臉部') > -1) out.push({g:'臉部', items:vals('face_state').filter(no)});
+    if (parts.indexOf('身體') > -1) out.push({g:'身體', items:vals('body_area').filter(no).map(function(v){ return v + '緊繃'; })});
+    return out.filter(function(x){ return x.items.length; });
   }
+  var topOrder = {}, topGroups = [];
   function buildTop(){
-    var box = document.getElementById('sv-top'), list = picked();
-    topOrder = topOrder.filter(function(v){ return list.indexOf(v) > -1; });
-    box.innerHTML = '';
-    if (!list.length){ box.previousElementSibling.hidden = true; return; }
-    box.previousElementSibling.hidden = false;
-    list.forEach(function(v){
-      var l = document.createElement('label'), i = document.createElement('input'), sp = document.createElement('span');
-      i.type = 'checkbox'; i.name = 'top'; i.value = v; if (topOrder.indexOf(v) > -1) i.checked = true;
-      sp.textContent = v; l.appendChild(i); l.appendChild(sp); box.appendChild(l);
+    var box = document.getElementById('sv-top'), q = document.getElementById('sv-top-q'), groups = picked(), split = groups.length > 1, old = topOrder;
+    topGroups = groups; topOrder = {}; box.innerHTML = '';
+    q.hidden = !groups.length;
+    q.innerHTML = split ? '剛剛勾的狀況裡，臉部和身體各自最想先處理的？<small>各自依序點選，最多 3 個</small>' : '剛剛勾的狀況裡，最想先處理的前三名？<small>依序點選，最多 3 個</small>';
+    groups.forEach(function(grp){
+      topOrder[grp.g] = (old[grp.g] || []).filter(function(v){ return grp.items.indexOf(v) > -1; });
+      if (split){ var t = document.createElement('p'); t.className = 'sv-gtitle'; t.textContent = grp.g; box.appendChild(t); }
+      var wrap = document.createElement('div'); wrap.className = 'sv-opts'; box.appendChild(wrap);
+      grp.items.forEach(function(v){
+        var l = document.createElement('label'), i = document.createElement('input'), sp = document.createElement('span');
+        i.type = 'checkbox'; i.name = 'top'; i.value = v; i.dataset.g = grp.g; if (topOrder[grp.g].indexOf(v) > -1) i.checked = true;
+        sp.textContent = (!split && grp.g === '臉部') ? '臉部：' + v : v;
+        l.appendChild(i); l.appendChild(sp); wrap.appendChild(l);
+      });
     });
     paintRank();
   }
-  var topOrder = [];
   function paintRank(){
     [].forEach.call(document.querySelectorAll('#sv-top label'), function(l){
-      var r = topOrder.indexOf(l.querySelector('input').value);
+      var i = l.querySelector('input'), r = (topOrder[i.dataset.g] || []).indexOf(i.value);
       if (r > -1) l.setAttribute('data-rank', r + 1); else l.removeAttribute('data-rank');
     });
   }
+  function topText(arr){ return arr.length ? arr.map(function(v, k){ return (k + 1) + '. ' + v; }).join('　') : '未填'; }
   form.addEventListener('click', function(e){
     if (e.target.closest('[data-next]')) next();
     if (e.target.closest('[data-back]')){ history.pop(); show(current()); }
   });
   form.addEventListener('change', function(e){
     if (e.target.name === 'top'){
-      var v = e.target.value;
+      var v = e.target.value, g = e.target.dataset.g;
       if (e.target.checked){
-        if (topOrder.length >= 3){ e.target.checked = false; err('err-end', '最多選 3 個，想換的話先取消一個'); return; }
-        topOrder.push(v);
-      } else topOrder = topOrder.filter(function(x){ return x !== v; });
+        if (topOrder[g].length >= 3){ e.target.checked = false; err('err-end', (topGroups.length > 1 ? g : '') + '最多選 3 個，想換的話先取消一個'); return; }
+        topOrder[g].push(v);
+      } else topOrder[g] = topOrder[g].filter(function(x){ return x !== v; });
       err('err-end'); paintRank(); return;
     }
     [].forEach.call(form.querySelectorAll('.sv-more'), function(m){
@@ -666,7 +674,8 @@
       var st = m.closest('.sv-step').dataset.step, g = m.closest('.sv-group');
       if (!m.hidden && m.value.trim() && history.indexOf(st) > -1 && !(g && g.hidden)) lines.push(m.dataset.label + '：' + m.value.trim());
     });
-    lines.push('★最想先處理：' + (topOrder.length ? topOrder.map(function(v, k){ return (k + 1) + '. ' + v; }).join('　') : '未填'));
+    if (topGroups.length > 1) topGroups.forEach(function(grp){ lines.push('★【' + grp.g + '】最想先處理：' + topText(topOrder[grp.g])); });
+    else lines.push('★最想先處理：' + topText(topGroups.length ? topOrder[topGroups[0].g] : []));
     lines.push('影響：' + (vals('impact').join('、') || '未填'));
     lines.push('試過的方法：' + (vals('tried').join('、') || '未填'));
     var wish = document.getElementById('sv-wish').value.trim();
