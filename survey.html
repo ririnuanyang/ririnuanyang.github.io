@@ -604,6 +604,8 @@
   /* 後台：Google 表單「日日暖陽｜需求問卷」。發布後把 ACTION 與三個 entry 編號填進來 */
   var ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSezdcFL3J7y-b-94I21PyjqIXzyIa6QTiUbFho6ryGOqBStoQ/formResponse";                 /* https://docs.google.com/forms/d/e/…/formResponse */
   var F_NAME = "entry.1271984116", F_PATH = "entry.2055308400", F_BODY = "entry.708772056";  /* entry.xxxx */
+  /* 好篩選的獨立欄位（10/13 加）：路線／部位、最在意的困擾、想要的、想來的時間、年齡、工作型態、聯絡方式 */
+  var F_COLS = {route:"entry.1172194644", top:"entry.1725221008", want:"entry.469260937", when:"entry.6021435", age:"entry.512475123", work:"entry.735431815", contact:"entry.2076499229"};
 
   var form = document.getElementById('sv-form');
   var steps = [].slice.call(form.querySelectorAll('.sv-step'));
@@ -748,6 +750,18 @@
     fd.append(F_NAME, document.getElementById('sv-name').value.trim() + '｜' + way + '：' + contact);
     fd.append(F_PATH, path);
     fd.append(F_BODY, lines.join('\n'));
+    var cols = {route:'', top:[], want:[], when:val('when'), age:val('age'), work:val('work'), contact:way + '：' + contact};
+    var wishTxt = document.getElementById('sv-wish').value.trim();
+    if (path === '健康評估'){
+      cols.route = '健康評估'; cols.top.push(rankText('inner_pain'));
+    } else {
+      var ps = vals('outer_part'); cols.route = '三機體驗：' + ps.join('、');
+      if (ps.indexOf('臉部') > -1){ cols.top.push('臉部：' + rankText('face_state')); if (vals('face_want').length) cols.want.push('臉部想加強：' + withMore('face_want')); }
+      if (ps.indexOf('身體') > -1){ cols.top.push('身體緊繃：' + withMore('body_area')); if (vals('body_care').length) cols.want.push('希望的放鬆：' + withMore('body_care')); }
+    }
+    if (wishTxt) cols.want.push('最想做的事：' + wishTxt);
+    cols.top = cols.top.join('／'); cols.want = cols.want.join('／');
+    Object.keys(F_COLS).forEach(function(k){ if (cols[k]) fd.append(F_COLS[k], cols[k]); });
     fetch(ACTION, {method:'POST', mode:'no-cors', body:fd}).then(done, function(){
       btn.disabled = false; btn.textContent = '送出問卷';
       err('err-end', '送出失敗，請稍後再試，或直接加 LINE 跟湯湯說');
