@@ -282,6 +282,7 @@
   .sv-head h1{font-size:clamp(1.5rem,3.4vw,2.1rem); line-height:1.45; color:var(--main); margin:4px 0 6px}
   .sv-head p{color:var(--ink-2)}
   .sv-bar{height:6px; background:var(--paper); border-radius:99px; margin:18px auto 0; max-width:320px; overflow:hidden}
+  .sv-page{margin:8px 0 0; font-size:.85rem; color:var(--ink-2)}
   .sv-bar span{display:block; height:100%; width:33%; background:var(--main); border-radius:99px; transition:width .3s}
   .sv-card{background:var(--paper); border-radius:20px; padding:32px 30px}
   .sv-q{display:block; font-weight:700; margin:22px 0 10px; color:var(--ink)}
@@ -309,9 +310,9 @@
   #sv-form [hidden]{display:none !important}
   .sv-eblock.first{margin-top:0; padding-top:0; border-top:0}
   .sv-eblock.first .sv-gtitle{margin-top:0}
-  .sv-top label{position:relative}
-  .sv-top label[data-rank] span{padding-left:46px}
-  .sv-top label[data-rank]::before{content:attr(data-rank); position:absolute; left:12px; top:50%; transform:translateY(-50%); width:24px; height:24px; border-radius:50%; background:var(--main); color:#fff; font-size:.8rem; font-weight:700; display:grid; place-items:center; z-index:1}
+  .ranked label{position:relative}
+  .ranked label[data-rank] span{padding-left:46px}
+  .ranked label[data-rank]::before{content:attr(data-rank); position:absolute; left:12px; top:50%; transform:translateY(-50%); width:24px; height:24px; border-radius:50%; background:var(--main); color:#fff; font-size:.8rem; font-weight:700; display:grid; place-items:center; z-index:1}
   .sv-agree{display:flex; gap:10px; align-items:flex-start; margin-top:22px; font-size:.88rem; color:var(--ink-2); line-height:1.7; cursor:pointer}
   .sv-agree input{margin-top:5px; accent-color:var(--main); width:18px; height:18px; flex:none}
   .sv-agree b{color:var(--ink)}
@@ -346,6 +347,7 @@
       <h1>花 2 分鐘，<span style="display:inline-block">讓湯湯先了解你</span></h1>
       <p>見面時就能直接聊你在意的事</p>
       <div class="sv-bar"><span id="sv-progress"></span></div>
+      <p class="sv-page" id="sv-page">第 1／3 頁</p>
     </div>
 
     <form id="sv-form" class="sv-card" novalidate>
@@ -364,25 +366,25 @@
 
       <!-- 第 2 頁 A：健康評估 -->
       <section class="sv-step" data-step="inner" hidden>
-        <p class="sv-q">最近最困擾你的是？<small>可複選</small></p>
-        <div class="sv-opts">
+        <p class="sv-q">最近最困擾你的是？<small>依在意程度點選，最多 3 個</small></p>
+        <div class="sv-opts ranked">
           <label><input type="checkbox" name="inner_pain" value="吃得跟以前一樣，體重卻慢慢上升"><span>吃得跟以前一樣，體重卻慢慢上升</span></label>
           <label><input type="checkbox" name="inner_pain" value="褲子變緊、腰圍變粗"><span>褲子變緊、腰圍變粗</span></label>
           <label><input type="checkbox" name="inner_pain" value="下午容易沒精神"><span>下午容易沒精神</span></label>
           <label><input type="checkbox" name="inner_pain" value="睡不好、睡不飽"><span>睡不好、睡不飽</span></label>
-          <label><input type="checkbox" name="inner_pain" value="常常嘴饞，壓力大就想吃"><span>常常嘴饞，壓力大就想吃</span></label>
+          <label><input type="checkbox" name="inner_pain" value="容易嘴饞，壓力大就想吃"><span>容易嘴饞，壓力大就想吃</span></label>
           <label><input type="checkbox" name="inner_pain" value="試過很多方法，總是回到原點"><span>試過很多方法，總是回到原點</span></label>
           <label><input type="checkbox" name="inner_pain" value="保健品買了一堆，不知道適不適合"><span>保健品買了一堆，不知道適不適合</span></label>
           <label><input type="checkbox" name="inner_pain" value="其他"><span>其他</span></label>
         </div>
         <input class="sv-input sv-more" type="text" maxlength="100" data-for="inner_pain" data-show="其他" data-label="困擾其他" placeholder="寫一下是什麼狀況" hidden>
-        <p class="sv-q">平常有在吃保健品或做保養嗎？</p>
+        <p class="sv-q">平常有吃保健品的習慣嗎？</p>
         <div class="sv-opts row">
           <label><input type="radio" name="inner_supp" value="有好幾種"><span>有好幾種</span></label>
           <label><input type="radio" name="inner_supp" value="有一兩種"><span>有一兩種</span></label>
           <label><input type="radio" name="inner_supp" value="沒有"><span>沒有</span></label>
         </div>
-        <input class="sv-input sv-more" type="text" maxlength="100" data-for="inner_supp" data-show="有好幾種,有一兩種" data-label="平常吃的／做的" placeholder="例如：魚油、益生菌、每週去按摩" hidden>
+        <input class="sv-input sv-more" type="text" maxlength="100" data-for="inner_supp" data-show="有好幾種,有一兩種" data-label="平常吃的保健品" placeholder="例如：魚油、益生菌" hidden>
         <p class="sv-err" id="err-inner"></p>
         <div class="sv-nav"><button type="button" class="btn ghost" data-back>上一步</button><button type="button" class="btn" data-next>下一步</button></div>
       </section>
@@ -397,15 +399,13 @@
 
         <div class="sv-group" data-group="臉部" hidden>
           <p class="sv-gtitle">臉部</p>
-          <p class="sv-q">臉部最近的狀況？<small>可複選</small></p>
-          <div class="sv-opts">
-            <label><input type="checkbox" name="face_state" value="看起來沒精神、氣色差"><span>看起來沒精神、氣色差</span></label>
-            <label><input type="checkbox" name="face_state" value="容易乾燥、有緊繃感"><span>容易乾燥、有緊繃感</span></label>
+          <p class="sv-q">臉部最近的狀況？<small>依在意程度點選，最多 3 個</small></p>
+          <div class="sv-opts ranked">
+            <label><input type="checkbox" name="face_state" value="氣色差、熬夜後臉色暗沉"><span>氣色差、熬夜後臉色暗沉</span></label>
+            <label><input type="checkbox" name="face_state" value="容易乾燥、緊繃，換季更明顯"><span>容易乾燥、緊繃，換季更明顯</span></label>
             <label><input type="checkbox" name="face_state" value="容易出油、覺得洗不乾淨"><span>容易出油、覺得洗不乾淨</span></label>
-            <label><input type="checkbox" name="face_state" value="熬夜後臉色暗沉"><span>熬夜後臉色暗沉</span></label>
             <label><input type="checkbox" name="face_state" value="妝容不服貼、容易浮粉"><span>妝容不服貼、容易浮粉</span></label>
-            <label><input type="checkbox" name="face_state" value="換季時特別乾"><span>換季時特別乾</span></label>
-            <label><input type="checkbox" name="face_state" value="保養品擦了好像沒吸收"><span>保養品擦了好像沒吸收</span></label>
+            <label><input type="checkbox" name="face_state" value="在意毛孔看起來明顯"><span>在意毛孔看起來明顯</span></label>
             <label><input type="checkbox" name="face_state" value="其他"><span>其他</span></label>
           </div>
           <input class="sv-input sv-more" type="text" maxlength="100" data-for="face_state" data-show="其他" data-label="臉部其他" placeholder="寫一下臉部的狀況" hidden>
@@ -431,7 +431,7 @@
 
         <div class="sv-group" data-group="身體" hidden>
           <p class="sv-gtitle">身體</p>
-          <p class="sv-q">哪裡最常覺得緊繃？<small>可複選</small></p>
+          <p class="sv-q">平常哪些部位比較容易覺得緊繃？<small>可複選</small></p>
           <div class="sv-opts row">
             <label><input type="checkbox" name="body_area" value="肩頸"><span>肩頸</span></label>
             <label><input type="checkbox" name="body_area" value="上背"><span>上背</span></label>
@@ -440,6 +440,7 @@
             <label><input type="checkbox" name="body_area" value="臀部"><span>臀部</span></label>
             <label><input type="checkbox" name="body_area" value="大腿"><span>大腿</span></label>
             <label><input type="checkbox" name="body_area" value="小腿"><span>小腿</span></label>
+            <label><input type="checkbox" name="body_area" value="全身"><span>全身</span></label>
             <label><input type="checkbox" name="body_area" value="其他"><span>其他</span></label>
           </div>
           <input class="sv-input sv-more" type="text" maxlength="100" data-for="body_area" data-show="其他" data-label="緊繃部位其他" placeholder="寫一下是哪裡" hidden>
@@ -447,16 +448,14 @@
           <div class="sv-opts row">
             <label><input type="radio" name="body_sit" value="4 小時以下"><span>4 小時以下</span></label>
             <label><input type="radio" name="body_sit" value="4–8 小時"><span>4–8 小時</span></label>
-            <label><input type="radio" name="body_sit" value="8 小時以上"><span>8 小時以上</span></label>
+            <label><input type="radio" name="body_sit" value="超過 8 小時"><span>超過 8 小時</span></label>
           </div>
           <p class="sv-q">最在意的是？<small>可複選</small></p>
           <div class="sv-opts">
             <label><input type="checkbox" name="body_care" value="沒時間好好放鬆"><span>沒時間好好放鬆</span></label>
             <label><input type="checkbox" name="body_care" value="想找在家也能做的舒緩方式"><span>想找在家也能做的舒緩方式</span></label>
-            <label><input type="checkbox" name="body_care" value="久坐一整天身體很緊"><span>久坐一整天身體很緊</span></label>
-            <label><input type="checkbox" name="body_care" value="下班後累到不想動"><span>下班後累到不想動</span></label>
-            <label><input type="checkbox" name="body_care" value="壓力大，想好好休息一下"><span>壓力大，想好好休息一下</span></label>
-            <label><input type="checkbox" name="body_care" value="按摩太痛，不想再去"><span>按摩太痛，不想再去</span></label>
+            <label><input type="checkbox" name="body_care" value="下班後很累、壓力大，想好好休息"><span>下班後很累、壓力大，想好好休息</span></label>
+            <label><input type="checkbox" name="body_care" value="喜歡溫和、不會痛的放鬆方式"><span>喜歡溫和、不會痛的放鬆方式</span></label>
             <label><input type="checkbox" name="body_care" value="想養成固定照顧自己的習慣"><span>想養成固定照顧自己的習慣</span></label>
             <label><input type="checkbox" name="body_care" value="其他"><span>其他</span></label>
           </div>
@@ -469,13 +468,11 @@
       <!-- 第 3 頁：共同 -->
       <section class="sv-step" data-step="end" hidden>
         <div class="sv-eblock" data-eblock="all" hidden>
-          <p class="sv-q">剛剛勾的狀況裡，最想先處理的前三名？<small>依序點選，最多 3 個</small></p>
-          <div class="sv-opts sv-top" data-g="all"></div>
           <p class="sv-q">這個狀況最影響你什麼？<small>可複選</small></p>
           <div class="sv-opts row">
             <label><input type="checkbox" name="impact" value="工作時的專注"><span>工作時的專注</span></label>
             <label><input type="checkbox" name="impact" value="心情"><span>心情</span></label>
-            <label><input type="checkbox" name="impact" value="穿衣和自信"><span>穿衣和自信</span></label>
+            <label><input type="checkbox" name="impact" value="穿衣服的自信"><span>穿衣服的自信</span></label>
             <label><input type="checkbox" name="impact" value="睡眠"><span>睡眠</span></label>
             <label><input type="checkbox" name="impact" value="陪家人的時間"><span>陪家人的時間</span></label>
             <label><input type="checkbox" name="impact" value="運動和出門的意願"><span>運動和出門的意願</span></label>
@@ -487,29 +484,24 @@
           <div class="sv-opts row">
             <label><input type="checkbox" name="tried" value="調整飲食"><span>調整飲食</span></label>
             <label><input type="checkbox" name="tried" value="運動"><span>運動</span></label>
+            <label><input type="checkbox" name="tried" value="調整作息"><span>調整作息</span></label>
             <label><input type="checkbox" name="tried" value="吃保健品"><span>吃保健品</span></label>
             <label><input type="checkbox" name="tried" value="按摩或 SPA"><span>按摩或 SPA</span></label>
-            <label><input type="checkbox" name="tried" value="保養品"><span>保養品</span></label>
             <label><input type="checkbox" name="tried" value="代餐或減重課程"><span>代餐或減重課程</span></label>
             <label><input type="checkbox" name="tried" value="還沒試過"><span>還沒試過</span></label>
             <label><input type="checkbox" name="tried" value="其他"><span>其他</span></label>
           </div>
           <input class="sv-input sv-more" type="text" maxlength="100" data-for="tried" data-show="其他" data-label="方法其他" placeholder="寫一下試過什麼" hidden>
-          <label class="sv-q" for="sv-wish">如果這個困擾少一點，你最想做什麼？<small>選填</small></label>
-          <input class="sv-input" id="sv-wish" type="text" maxlength="100" placeholder="例如：想穿回以前的褲子、下班還有力氣陪小孩">
         </div>
         <div class="sv-eblock sv-group" data-eblock="臉部" hidden>
           <p class="sv-gtitle">臉部</p>
-          <p class="sv-q">臉部的狀況裡，最想先處理的前三名？<small>依序點選，最多 3 個</small></p>
-          <div class="sv-opts sv-top" data-g="臉部"></div>
           <p class="sv-q">臉部的狀況最影響你什麼？<small>可複選</small></p>
           <div class="sv-opts row">
             <label><input type="checkbox" name="impact_face" value="心情"><span>心情</span></label>
             <label><input type="checkbox" name="impact_face" value="自信"><span>自信</span></label>
             <label><input type="checkbox" name="impact_face" value="上妝和拍照"><span>上妝和拍照</span></label>
             <label><input type="checkbox" name="impact_face" value="工作時的狀態"><span>工作時的狀態</span></label>
-            <label><input type="checkbox" name="impact_face" value="出門見人的意願"><span>出門見人的意願</span></label>
-            <label><input type="checkbox" name="impact_face" value="跟朋友出去的興致"><span>跟朋友出去的興致</span></label>
+            <label><input type="checkbox" name="impact_face" value="出門和社交的意願"><span>出門和社交的意願</span></label>
             <label><input type="checkbox" name="impact_face" value="其他"><span>其他</span></label>
           </div>
           <input class="sv-input sv-more" type="text" maxlength="100" data-for="impact_face" data-show="其他" data-label="臉部影響其他" placeholder="寫一下影響了什麼" hidden>
@@ -524,13 +516,9 @@
             <label><input type="checkbox" name="tried_face" value="其他"><span>其他</span></label>
           </div>
           <input class="sv-input sv-more" type="text" maxlength="100" data-for="tried_face" data-show="其他" data-label="臉部方法其他" placeholder="寫一下試過什麼" hidden>
-          <label class="sv-q" for="sv-wish_face">如果臉部的困擾少一點，你最想做什麼？<small>選填</small></label>
-          <input class="sv-input" id="sv-wish_face" type="text" maxlength="100" placeholder="例如：素顏也敢出門">
         </div>
         <div class="sv-eblock sv-group" data-eblock="身體" hidden>
           <p class="sv-gtitle">身體</p>
-          <p class="sv-q">身體的狀況裡，最想先處理的前三名？<small>依序點選，最多 3 個</small></p>
-          <div class="sv-opts sv-top" data-g="身體"></div>
           <p class="sv-q">身體的緊繃最影響你什麼？<small>可複選</small></p>
           <div class="sv-opts row">
             <label><input type="checkbox" name="impact_body" value="工作時的專注"><span>工作時的專注</span></label>
@@ -553,11 +541,11 @@
             <label><input type="checkbox" name="tried_body" value="其他"><span>其他</span></label>
           </div>
           <input class="sv-input sv-more" type="text" maxlength="100" data-for="tried_body" data-show="其他" data-label="身體方法其他" placeholder="寫一下試過什麼" hidden>
-          <label class="sv-q" for="sv-wish_body">如果身體的緊繃少一點，你最想做什麼？<small>選填</small></label>
-          <input class="sv-input" id="sv-wish_body" type="text" maxlength="100" placeholder="例如：下班還有力氣陪小孩">
         </div>
         <div class="sv-group sv-common"></div>
-        <p class="sv-q">希望什麼時候開始？</p>
+        <label class="sv-q" for="sv-wish">如果這些困擾少一點，你最想做什麼？<small>選填</small></label>
+        <input class="sv-input" id="sv-wish" type="text" maxlength="100" placeholder="例如：下班還有力氣陪小孩">
+        <p class="sv-q" id="sv-when-q">希望什麼時候開始？</p>
         <div class="sv-opts row">
           <label><input type="radio" name="when" value="越快越好"><span>越快越好</span></label>
           <label><input type="radio" name="when" value="這個月內"><span>這個月內</span></label>
@@ -576,6 +564,7 @@
           <label><input type="radio" name="work" value="輪班"><span>輪班</span></label>
           <label><input type="radio" name="work" value="自由工作"><span>自由工作</span></label>
           <label><input type="radio" name="work" value="在家照顧家人"><span>在家照顧家人</span></label>
+          <label><input type="radio" name="work" value="已退休"><span>已退休</span></label>
           <label><input type="radio" name="work" value="其他"><span>其他</span></label>
         </div>
         <p class="sv-q">方便的時段<small>可複選</small></p>
@@ -592,7 +581,7 @@
         <input class="sv-input" id="sv-contact" type="text" maxlength="60" autocomplete="off" placeholder="請先選上面的聯絡方式" style="margin-top:4px">
         <label class="sv-q" for="sv-note">想先跟湯湯說的話<small>選填</small></label>
         <textarea class="sv-input" id="sv-note" name="note" rows="3" maxlength="500" placeholder="例如：最近工作很忙、想先了解看看"></textarea>
-        <label class="sv-agree"><input type="checkbox" id="sv-agree"><span>你留的聯絡方式和填的資料，只用來聯繫你、約時間和了解你的需求，不會提供給其他人。這不是醫療問診，如果有身體不適或正在治療，請以醫師的建議為準。<b>我了解並同意</b></span></label>
+        <label class="sv-agree"><input type="checkbox" id="sv-agree"><span>日日暖陽（湯湯）會蒐集你填的稱呼、聯絡方式與問卷內容，只用來聯繫你、安排預約和了解你的需求。資料存放在 Google 表單，只有湯湯本人在台灣使用，不會提供給其他人，保存到你要求刪除，或最後一次聯繫滿 2 年為止。你可以隨時透過 LINE 要求查詢、更正、停止使用或刪除你的資料；聯絡方式不填的話，湯湯就沒辦法聯繫你安排時間。這不是醫療問診，如果有身體不適或正在治療，請以醫師的建議為準。<b>我了解並同意</b></span></label>
         <p class="sv-err" id="err-end"></p>
         <div class="sv-nav"><button type="button" class="btn ghost" data-back>上一步</button><button type="submit" class="btn" id="sv-submit">送出問卷</button></div>
       </section>
@@ -625,6 +614,8 @@
     steps.forEach(function(s){ s.hidden = s.dataset.step !== name; });
     var map = {start:1, inner:2, outer:2, end:3, done:3};
     document.getElementById('sv-progress').style.width = (map[name] / 3 * 100) + '%';
+    document.getElementById('sv-page').textContent = name === 'done' ? '完成' : '第 ' + map[name] + '／3 頁';
+    if (window.gtag) gtag('event', 'survey_step', {step: name, path: val('path') || ''});
     var top = document.querySelector('.sv-head').getBoundingClientRect().top + window.scrollY - 80;
     if (window.scrollY > top) window.scrollTo({top: top, behavior: 'smooth'});
   }
@@ -645,64 +636,51 @@
       if (parts.indexOf('身體') > -1 && !vals('body_area').length) return err('err-outer', '請勾選身體最常緊繃的地方');
       err('err-outer'); to = 'end';
     }
-    if (to === 'end') buildTop();
+    if (to === 'end') setupEnd();
     history.push(to); show(to);
   }
-  /* 第 3 頁：健康評估一區；三機體驗勾臉部出現臉部區、勾身體出現身體區，各區自己的前三名、影響、試過的方法 */
-  var SUF = {all:'', 臉部:'_face', 身體:'_body'};
-  function picked(){
-    var no = function(v){ return v !== '其他'; };
-    if (val('path') === '健康評估') return [{g:'all', items:vals('inner_pain').filter(no)}];
-    var parts = vals('outer_part'), out = [];
-    if (parts.indexOf('臉部') > -1) out.push({g:'臉部', items:vals('face_state').filter(no)});
-    if (parts.indexOf('身體') > -1) out.push({g:'身體', items:vals('body_area').filter(no).map(function(v){ return v + '緊繃'; })});
-    return out;
-  }
-  var topOrder = {}, topGroups = [];
-  function buildTop(){
-    var groups = picked(), old = topOrder;
-    topGroups = groups; topOrder = {};
-    [].forEach.call(form.querySelectorAll('.sv-eblock'), function(b){
-      b.hidden = !groups.some(function(grp){ return grp.g === b.dataset.eblock; });
-      b.classList.remove('first');
-    });
-    var first = form.querySelector('.sv-eblock:not([hidden])'); if (first) first.classList.add('first');
-    groups.forEach(function(grp){
-      var box = form.querySelector('.sv-top[data-g="' + grp.g + '"]');
-      topOrder[grp.g] = (old[grp.g] || []).filter(function(v){ return grp.items.indexOf(v) > -1; });
-      box.innerHTML = '';
-      box.hidden = box.previousElementSibling.hidden = !grp.items.length;
-      grp.items.forEach(function(v){
-        var l = document.createElement('label'), i = document.createElement('input'), sp = document.createElement('span');
-        i.type = 'checkbox'; i.name = 'top'; i.value = v; i.dataset.g = grp.g; if (topOrder[grp.g].indexOf(v) > -1) i.checked = true;
-        sp.textContent = v; l.appendChild(i); l.appendChild(sp); box.appendChild(l);
-      });
-    });
-    paintRank();
-  }
-  function paintRank(){
-    [].forEach.call(form.querySelectorAll('.sv-top label'), function(l){
-      var i = l.querySelector('input'), r = (topOrder[i.dataset.g] || []).indexOf(i.value);
+  /* 困擾、臉部狀況：點選順序就是在意程度，最多 3 個 */
+  var RANK = {inner_pain:[], face_state:[]};
+  function paintRank(n){
+    [].forEach.call(form.querySelectorAll('input[name="' + n + '"]'), function(i){
+      var r = RANK[n].indexOf(i.value), l = i.closest('label');
       if (r > -1) l.setAttribute('data-rank', r + 1); else l.removeAttribute('data-rank');
     });
+  }
+  /* 第 3 頁：健康評估一區；三機體驗勾臉部出現臉部區、勾身體出現身體區 */
+  var SUF = {all:'', 臉部:'_face', 身體:'_body'};
+  function blocks(){
+    if (val('path') === '健康評估') return ['all'];
+    return vals('outer_part');
+  }
+  function setupEnd(){
+    var on = blocks();
+    [].forEach.call(form.querySelectorAll('.sv-eblock'), function(b){
+      b.hidden = on.indexOf(b.dataset.eblock) < 0; b.classList.remove('first');
+    });
+    var first = form.querySelector('.sv-eblock:not([hidden])'); if (first) first.classList.add('first');
+    document.getElementById('sv-when-q').textContent = val('path') === '健康評估' ? '希望什麼時候開始？' : '希望什麼時候來體驗？';
   }
   function withMore(n){
     var m = form.querySelector('.sv-more[data-for="' + n + '"]'), t = m ? m.value.trim() : '';
     return vals(n).map(function(v){ return v === '其他' && t ? '其他（' + t + '）' : v; }).join('、');
   }
-  function topText(arr){ return arr.length ? arr.map(function(v, k){ return (k + 1) + '. ' + v; }).join('　') : '未填'; }
+  function rankText(n){
+    var m = form.querySelector('.sv-more[data-for="' + n + '"]'), t = m ? m.value.trim() : '';
+    return RANK[n].length ? RANK[n].map(function(v, k){ return (k + 1) + '. ' + (v === '其他' && t ? '其他（' + t + '）' : v); }).join('　') : '未填';
+  }
   form.addEventListener('click', function(e){
     if (e.target.closest('[data-next]')) next();
     if (e.target.closest('[data-back]')){ history.pop(); show(current()); }
   });
   form.addEventListener('change', function(e){
-    if (e.target.name === 'top'){
-      var v = e.target.value, g = e.target.dataset.g;
+    if (RANK[e.target.name]){
+      var n = e.target.name, v = e.target.value, eid = n === 'inner_pain' ? 'err-inner' : 'err-outer';
       if (e.target.checked){
-        if (topOrder[g].length >= 3){ e.target.checked = false; err('err-end', (g === 'all' ? '' : g) + '前三名最多選 3 個，想換的話先取消一個'); return; }
-        topOrder[g].push(v);
-      } else topOrder[g] = topOrder[g].filter(function(x){ return x !== v; });
-      err('err-end'); paintRank(); return;
+        if (RANK[n].length >= 3){ e.target.checked = false; err(eid, '最多選 3 個，想換的話先取消一個'); return; }
+        RANK[n].push(v);
+      } else RANK[n] = RANK[n].filter(function(x){ return x !== v; });
+      err(eid); paintRank(n);
     }
     [].forEach.call(form.querySelectorAll('.sv-more'), function(m){
       var on = vals(m.dataset.for).concat(val(m.dataset.for)).some(function(v){ return v && m.dataset.show.split(',').indexOf(v) > -1; });
@@ -726,13 +704,13 @@
     err('err-end');
     var path = val('path'), lines = ['聯絡方式：' + way + '　' + contact];
     if (path === '健康評估'){
-      lines.push('困擾：' + vals('inner_pain').join('、'));
-      lines.push('保健品或保養：' + (val('inner_supp') || '未填'));
+      lines.push('★最在意的困擾：' + rankText('inner_pain'));
+      lines.push('保健品：' + (val('inner_supp') || '未填'));
     } else {
       var parts = vals('outer_part');
       lines.push('想體驗部位：' + parts.join('、'));
       if (parts.indexOf('臉部') > -1){
-        lines.push('【臉部】狀況：' + vals('face_state').join('、'));
+        lines.push('★【臉部】最在意的狀況：' + rankText('face_state'));
         lines.push('【臉部】想加強：' + (vals('face_want').join('、') || '未填'));
         lines.push('【臉部】保養習慣：' + (val('face_habit') || '未填'));
       }
@@ -744,17 +722,16 @@
     }
     [].forEach.call(form.querySelectorAll('.sv-more'), function(m){
       var st = m.closest('.sv-step').dataset.step, g = m.closest('.sv-group, .sv-eblock');
-      if (!/^(impact|tried)/.test(m.dataset.for) && !m.hidden && m.value.trim() && history.indexOf(st) > -1 && !(g && g.hidden)) lines.push(m.dataset.label + '：' + m.value.trim());
+      if (!/^(impact|tried)/.test(m.dataset.for) && !RANK[m.dataset.for] && !m.hidden && m.value.trim() && history.indexOf(st) > -1 && !(g && g.hidden)) lines.push(m.dataset.label + '：' + m.value.trim());
     });
-    topGroups.forEach(function(grp){
-      var tag = grp.g === 'all' ? '' : '【' + grp.g + '】', sf = SUF[grp.g];
-      lines.push('★' + tag + '最想先處理：' + topText(topOrder[grp.g] || []));
+    blocks().forEach(function(g){
+      var tag = g === 'all' ? '' : '【' + g + '】', sf = SUF[g];
       lines.push(tag + '影響：' + (withMore('impact' + sf) || '未填'));
       lines.push(tag + '試過的方法：' + (withMore('tried' + sf) || '未填'));
-      var wish = document.getElementById('sv-wish' + sf).value.trim();
-      if (wish) lines.push(tag + '最想做的事：' + wish);
     });
-    lines.push('想開始的時間：' + (val('when') || '未填'));
+    var wish = document.getElementById('sv-wish').value.trim();
+    if (wish) lines.push('最想做的事：' + wish);
+    lines.push((path === '健康評估' ? '想開始的時間：' : '想來體驗的時間：') + (val('when') || '未填'));
     lines.push('年齡：' + (val('age') || '未填'));
     lines.push('工作型態：' + (val('work') || '未填'));
     lines.push('方便時段：' + (vals('time').join('、') || '未填'));
