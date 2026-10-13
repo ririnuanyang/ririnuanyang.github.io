@@ -660,6 +660,8 @@
     });
     var first = form.querySelector('.sv-eblock:not([hidden])'); if (first) first.classList.add('first');
     document.getElementById('sv-when-q').textContent = val('path') === '健康評估' ? '希望什麼時候開始？' : '希望什麼時候來體驗？';
+    var ex = {all:'想穿回以前的褲子', 臉部:'素顏也敢出門', 身體:'下班還有力氣陪小孩'};
+    document.getElementById('sv-wish').placeholder = '例如：' + (on.length > 1 ? '素顏出門、下班有力氣陪小孩' : ex[on[0]] || ex.all);
   }
   function withMore(n){
     var m = form.querySelector('.sv-more[data-for="' + n + '"]'), t = m ? m.value.trim() : '';
