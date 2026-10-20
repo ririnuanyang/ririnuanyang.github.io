@@ -22,7 +22,14 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   /* 只在正式網站記錄，本機預覽不送 GA，避免自己的瀏覽灌水 */
-  if (location.hostname === 'ririnuanyang.github.io') gtag('config', 'G-LP4N3P92ZJ');
+  /* 本人裝置不記錄（2026-10-20）：在這台裝置開一次 網址#me 就會標記，之後不送 GA、GoatCounter 也不算；開 #notme 取消 */
+  var rrnyMe = false;
+  try {
+    if (location.hash === '#me') { localStorage.setItem('rrny_me', '1'); localStorage.setItem('skipgc', 't'); alert('這台裝置已設為湯湯本人，之後瀏覽不會記進 GA 與造訪人次'); }
+    if (location.hash === '#notme') { localStorage.removeItem('rrny_me'); localStorage.removeItem('skipgc'); alert('已取消本人標記，這台裝置的瀏覽會重新記錄'); }
+    rrnyMe = localStorage.getItem('rrny_me') === '1';
+  } catch (e) {}
+  if (location.hostname === 'ririnuanyang.github.io' && !rrnyMe) gtag('config', 'G-LP4N3P92ZJ');
 </script>
 </head>
 <body>
