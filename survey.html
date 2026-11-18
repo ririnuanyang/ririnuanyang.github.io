@@ -758,7 +758,11 @@
     if (wishTxt) cols.want.push('最想做的事：' + wishTxt);
     cols.top = cols.top.join('\n'); cols.want = cols.want.join('\n');
     Object.keys(F_COLS).forEach(function(k){ if (cols[k]) fd.append(F_COLS[k], cols[k]); });
-    fetch(ACTION, {method:'POST', mode:'no-cors', body:fd}).then(done, function(){
+    fetch(ACTION, {method:'POST', mode:'no-cors', body:fd}).then(function(){
+      /* 完成預約問卷：只記路線，不傳姓名、聯絡方式等個資 */
+      if (window.gtag) gtag('event', 'survey_submit', {survey_path: path});
+      done();
+    }, function(){
       btn.disabled = false; btn.textContent = '送出問卷';
       err('err-end', '送出失敗，請稍後再試，或直接加 LINE 跟湯湯說');
     });
